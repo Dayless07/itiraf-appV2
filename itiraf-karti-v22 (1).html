@@ -1,0 +1,3534 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>İtiraf Kartları</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Syne:wght@700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Syne:wght@700;800&display=swap"></noscript>
+<style>
+/* Google Fonts loaded via <link> in <head> */
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+
+/* ═══ TEMALAR ═══ */
+:root{
+  --bg-a:#fdf6ec;--bg-b:#f0e4cf;--bg-c:#f8edda;
+  --surface:#ffffff;--surface2:#fffdf7;
+  --border-color:rgba(200,150,42,0.22);
+  --accent:#c8962a;--accent2:#e8b84b;--accent3:#d4826a;
+  --text-main:#2c1a0e;--text-mid:rgba(44,26,14,0.5);--text-dim:rgba(44,26,14,0.22);
+  --glow:rgba(200,150,42,0.25);--shadow-color:rgba(100,60,20,0.15);
+  --gradient:linear-gradient(90deg,#c8962a,#e8b84b 50%,#d4826a);
+  --display-font:'Playfair Display',serif;--body-font:'Raleway',sans-serif;
+  --menu-bg:rgba(253,246,236,0.97);--bg-line:rgba(200,150,42,0.04);--vignette:rgba(160,110,60,0.12);
+}
+body.t-night{
+  --bg-a:#0d1117;--bg-b:#080d14;--bg-c:#111827;
+  --surface:#1e2d45;--surface2:#162030;
+  --border-color:rgba(139,92,246,0.25);
+  --accent:#a78bfa;--accent2:#7c3aed;--accent3:#f472b6;
+  --text-main:#f0e8ff;--text-mid:rgba(240,232,255,0.55);--text-dim:rgba(240,232,255,0.2);
+  --glow:rgba(139,92,246,0.35);--shadow-color:rgba(0,0,30,0.6);
+  --gradient:linear-gradient(90deg,#a78bfa,#7c3aed 50%,#f472b6);
+  --display-font:'Syne',sans-serif;--body-font:'Raleway',sans-serif;
+  --menu-bg:rgba(13,17,23,0.97);--bg-line:rgba(139,92,246,0.04);--vignette:rgba(60,0,120,0.25);
+}
+body.t-candy{
+  --bg-a:#fff5fb;--bg-b:#ffe8f5;--bg-c:#fff0f8;
+  --surface:#ffffff;--surface2:#fffafd;
+  --border-color:rgba(236,72,153,0.2);
+  --accent:#ec4899;--accent2:#f9a8d4;--accent3:#c084fc;
+  --text-main:#4a0030;--text-mid:rgba(74,0,48,0.5);--text-dim:rgba(74,0,48,0.2);
+  --glow:rgba(236,72,153,0.25);--shadow-color:rgba(180,40,100,0.15);
+  --gradient:linear-gradient(90deg,#ec4899,#f9a8d4 50%,#c084fc);
+  --display-font:'Fredoka',sans-serif;--body-font:'Fredoka',sans-serif;
+  --menu-bg:rgba(255,245,251,0.97);--bg-line:rgba(236,72,153,0.04);--vignette:rgba(200,40,120,0.08);
+}
+body.t-forest{
+  --bg-a:#0f1a0e;--bg-b:#091208;--bg-c:#121f11;
+  --surface:#1e3020;--surface2:#162618;
+  --border-color:rgba(74,197,94,0.2);
+  --accent:#4ac55e;--accent2:#86efac;--accent3:#bef264;
+  --text-main:#e8f5e9;--text-mid:rgba(232,245,233,0.55);--text-dim:rgba(232,245,233,0.2);
+  --glow:rgba(74,197,94,0.3);--shadow-color:rgba(0,30,5,0.6);
+  --gradient:linear-gradient(90deg,#4ac55e,#86efac 50%,#bef264);
+  --display-font:'DM Serif Display',serif;--body-font:'Raleway',sans-serif;
+  --menu-bg:rgba(15,26,14,0.97);--bg-line:rgba(74,197,94,0.04);--vignette:rgba(0,40,10,0.35);
+}
+
+body{
+  font-family:var(--body-font);background:var(--bg-a);
+  overflow:hidden;touch-action:none;
+  height:100dvh;width:100vw;
+  display:flex;justify-content:center;align-items:center;
+  transition:background 0.6s ease;
+}
+/* Zengin kadife arka plan — çapraz fiber dokusu */
+.bg-layer{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse at 15% 88%,var(--glow) 0%,transparent 48%),
+    radial-gradient(ellipse at 85% 12%,var(--glow) 0%,transparent 48%),
+    radial-gradient(ellipse at 50% 50%,var(--bg-c) 0%,var(--bg-a) 40%,var(--bg-b) 100%);
+  transition:background 0.6s;
+}
+/* Kadife doku: çift yönlü micro-fiber */
+.bg-layer::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(127deg,transparent 0,transparent 1.5px,rgba(255,255,255,0.022) 1.5px,rgba(255,255,255,0.022) 3px),
+    repeating-linear-gradient(53deg, transparent 0,transparent 1.5px,rgba(0,0,0,0.028) 1.5px,rgba(0,0,0,0.028) 3px);
+  pointer-events:none;
+}
+/* Kadife ışık kırılması — yumuşak merkez parlaması */
+.bg-layer::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(255,255,255,0.038) 0%,transparent 100%);
+  pointer-events:none;
+}
+.bg-lines{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 32px,var(--bg-line) 32px,var(--bg-line) 33px);}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 35%,var(--vignette) 100%);}
+
+/* ═══ LOADING EKRANI ═══ */
+#loading-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:#0a0a12;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  gap:1.5rem;
+  transition:opacity 0.5s ease, visibility 0.5s ease;
+  /* CSS-only güvenlik: JS çalışmasa bile 4s sonra kaybol */
+  animation:loaderAutoHide 0.6s ease 4s forwards;
+}
+@keyframes loaderAutoHide{ to{ opacity:0; visibility:hidden; pointer-events:none; } }
+#loading-screen.fade-out{opacity:0;visibility:hidden;}
+
+.load-logo{
+  font-family:'Syne','Arial Black','Helvetica Neue',sans-serif;
+  font-size:3.5rem;font-weight:900;
+  background:linear-gradient(135deg,#a78bfa,#f472b6,#fb923c);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:logoIn 0.8s cubic-bezier(.34,1.56,.64,1) both 0.2s;
+  letter-spacing:-0.02em;
+}
+@keyframes logoIn{from{transform:scale(0.4) rotate(-8deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+
+.load-bar-wrap{width:160px;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
+.load-bar{height:100%;width:0%;background:linear-gradient(90deg,#a78bfa,#f472b6);border-radius:2px;transition:width 0.05s linear;}
+
+.load-sub{
+  font-family:'Raleway',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:0.55rem;font-weight:600;
+  letter-spacing:0.45em;text-transform:uppercase;color:rgba(255,255,255,0.3);
+  animation:fadeIn 0.5s ease both 0.6s;
+}
+
+/* ═══════════════════════════════════════════════════════
+   KADİFE MASA EFEKTİ
+═══════════════════════════════════════════════════════ */
+#velvet-table{
+  position:fixed;inset:0;z-index:3;pointer-events:none;
+  opacity:0;transition:opacity 1.1s ease;
+}
+#velvet-table.show{opacity:1;}
+/* Koyu kadife masa yüzeyi — tema bazlı */
+body:not(.t-night):not(.t-candy):not(.t-forest) #velvet-table{
+  background:
+    radial-gradient(ellipse 110% 75% at 50% 108%,#2e1404 0%,#180b02 28%,#0a0401 52%,transparent 100%),
+    linear-gradient(to bottom,transparent 38%,rgba(6,3,0,0.92) 100%);
+}
+body.t-night #velvet-table{
+  background:
+    radial-gradient(ellipse 110% 75% at 50% 108%,#060116 0%,#03000d 28%,#010008 52%,transparent 100%),
+    linear-gradient(to bottom,transparent 38%,rgba(1,0,5,0.94) 100%);
+}
+body.t-candy #velvet-table{
+  background:
+    radial-gradient(ellipse 110% 75% at 50% 108%,#1c0413 0%,#0e020a 28%,#070104 52%,transparent 100%),
+    linear-gradient(to bottom,transparent 38%,rgba(4,1,3,0.92) 100%);
+}
+body.t-forest #velvet-table{
+  background:
+    radial-gradient(ellipse 110% 75% at 50% 108%,#020e02 0%,#010701 28%,#010301 52%,transparent 100%),
+    linear-gradient(to bottom,transparent 38%,rgba(0,2,0,0.94) 100%);
+}
+/* Kadife fiber dokusu — masa yüzeyinde */
+#velvet-table::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(135deg,transparent 0,transparent 2px,rgba(255,255,255,0.007) 2px,rgba(255,255,255,0.007) 4px),
+    repeating-linear-gradient(45deg, transparent 0,transparent 2px,rgba(255,255,255,0.005) 2px,rgba(255,255,255,0.005) 4px);
+}
+/* Masa kenarı parlayan çizgi */
+#velvet-table::after{
+  content:'';position:absolute;left:5%;right:5%;top:46%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18) 25%,rgba(255,255,255,0.28) 50%,rgba(255,255,255,0.18) 75%,transparent);
+  filter:blur(0.5px);pointer-events:none;
+}
+#velvet-light{
+  position:fixed;inset:0;z-index:4;pointer-events:none;
+  opacity:0;transition:opacity 1.1s ease 0.3s;
+  background:radial-gradient(ellipse 50% 40% at 50% 44%,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.014) 55%,transparent 100%);
+}
+#velvet-light.show{opacity:1;}
+
+/* ════════════════════════════════════════════════════════
+   SİNEMATİK GİRİŞ ANİMASYONU v14
+   — AAA oyun kalitesi, 4 faza bölünmüş
+   — Canvas partiküller (JS)
+   — Yazı reveal (clip-path)
+   — Impact flash
+   — Kart fan-out
+════════════════════════════════════════════════════════ */
+
+/* Ana overlay — tam ekran karanlık */
+/* ════════════════════════════════════════════════════════════
+   SİNEMATİK OYUN GİRİŞİ  v15
+   ── 5 faz, ~4.5s, AAA mobil oyun kalitesi ──
+   Faz 0: Karanlık → renk çıkışı (atmosfer)
+   Faz 1: LOGO SLAM — harf harf çarpıyor, glitch, impact
+   Faz 2: Kategori patlaması — ikon + isim + ışık şeridi
+   Faz 3: Kart dağıtımı — fan → üst kart öne çıkar
+   Faz 4: Sahne silinir → oyun başlar
+════════════════════════════════════════════════════════════ */
+
+/* Ana kapsayıcı */
+/* ═══════════════════════════════════════════════
+   SİNEMATİK GİRİŞ v17 — saf CSS, GPU hızlandırmalı
+   Canvas/shadowBlur YOK — hiç kasma olmaz
+═══════════════════════════════════════════════ */
+
+#game-intro{
+  position:fixed;inset:0;z-index:2000;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;visibility:hidden;overflow:hidden;
+}
+#game-intro.active{ visibility:visible;pointer-events:all; }
+
+/* Renk atmosferi */
+#gi-bg{
+  position:absolute;inset:0;pointer-events:none;
+  opacity:0;transition:opacity 1.2s ease;
+}
+#gi-bg.show{ opacity:1; }
+
+/* Siyah kapak */
+#gi-cover{
+  position:absolute;inset:0;background:#000;opacity:1;z-index:20;pointer-events:none;
+  transition:opacity 0s;
+}
+#gi-cover.open{ opacity:0;transition:opacity 0.65s ease; }
+#gi-cover.close{ opacity:1;transition:opacity 0.5s ease; }
+
+/* Tarama çizgileri */
+#gi-scan{
+  position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;
+  background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(0,0,0,0.12) 2px,rgba(0,0,0,0.12) 3px);
+  transition:opacity 0.8s ease;
+}
+#gi-scan.show{ opacity:1; }
+
+/* Flash */
+#gi-flash{
+  position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:18;
+}
+@keyframes giFlash{ 0%{opacity:0.7} 100%{opacity:0} }
+#gi-flash.pop{ animation:giFlash 0.35s ease forwards; }
+#gi-flash.pop2{ animation:giFlash 0.25s ease forwards; }
+
+/* ── FAZ 1: LOGO ── */
+#gi-logo{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;z-index:10;pointer-events:none;
+}
+#gi-letters{ display:flex;justify-content:center;overflow:hidden;padding-bottom:0.06em; }
+
+.gi-letter{
+  display:inline-block;
+  font-family:'Syne','Arial Black','Helvetica Neue',sans-serif;
+  font-size:clamp(3.8rem,18vw,8rem);
+  font-weight:900;letter-spacing:-0.02em;line-height:1;
+  color:#fff;
+  /* Başlangıç: aşağıda */
+  transform:translateY(105%);
+  opacity:0;
+}
+/* Her harf ayrı ayrı animasyona alınacak — JS inline style */
+@keyframes letterSlam{
+  0%  { transform:translateY(105%) scaleY(1.3); opacity:0; }
+  65% { transform:translateY(-6%) scaleY(0.96); opacity:1; }
+  82% { transform:translateY(3%)  scaleY(1.02); }
+  100%{ transform:translateY(0)   scaleY(1);    opacity:1; }
+}
+.gi-letter.slam{
+  animation:letterSlam 0.36s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+#gi-kartlari{
+  font-family:'Raleway',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:clamp(0.6rem,3vw,1rem);
+  font-weight:700;letter-spacing:0.6em;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  margin-top:0.4em;
+  opacity:0;transform:scaleX(0.2);
+  transition:opacity 0.5s ease, transform 0.5s cubic-bezier(.22,1,.36,1);
+}
+#gi-kartlari.show{ opacity:1;transform:scaleX(1); }
+
+/* ── FAZ 2: KATEGORİ ── */
+#gi-cat{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-52%);
+  text-align:center;z-index:10;pointer-events:none;
+  opacity:0;
+}
+#gi-cat.show{ opacity:1; }
+
+.gi-cat-icon{
+  font-size:clamp(5rem,24vw,9.5rem);
+  display:block;line-height:1;
+  transform:scale(0) rotate(-20deg);opacity:0;
+  transition:transform 0.5s cubic-bezier(.34,1.7,.64,1), opacity 0.2s ease;
+}
+.gi-cat-icon.show{ transform:scale(1) rotate(0deg);opacity:1; }
+
+@keyframes iconPulse{
+  0%,100%{ transform:scale(1) rotate(0deg); }
+  50%{ transform:scale(1.07) rotate(4deg); }
+}
+.gi-cat-icon.pulse{ animation:iconPulse 2s ease-in-out infinite; }
+
+.gi-cat-name{
+  font-family:'Fredoka','Segoe UI Rounded',system-ui,sans-serif;
+  font-size:clamp(3rem,14vw,6rem);
+  font-weight:700;color:#fff;
+  display:block;margin-top:0.08em;
+  clip-path:inset(0 101% 0 0);opacity:0;
+  transition:clip-path 0.55s cubic-bezier(.16,1,.3,1), opacity 0.15s ease;
+  text-shadow:0 0 18px var(--cc,#fff), 0 0 40px color-mix(in srgb,var(--cc,#fff) 60%,transparent),
+              0 2px 16px rgba(0,0,0,0.9);
+}
+.gi-cat-name.show{ clip-path:inset(0 0% 0 0);opacity:1; }
+
+.gi-cat-line{
+  height:2px;width:0;
+  background:linear-gradient(90deg,transparent,var(--cc,#fff),transparent);
+  border-radius:2px;margin:0.5rem auto 0;
+  transition:width 0.7s cubic-bezier(.22,1,.36,1);
+  filter:blur(0.5px);
+}
+.gi-cat-line.show{ width:65%; }
+
+.gi-cat-sub{
+  font-family:'Raleway',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.5em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);display:block;margin-top:0.7rem;
+  opacity:0;transform:translateY(8px);
+  transition:opacity 0.4s ease, transform 0.4s ease;
+}
+.gi-cat-sub.show{ opacity:1;transform:translateY(0); }
+
+/* ── FAZ 3: KART FANI ── */
+#gi-fan{
+  position:absolute;top:52%;left:50%;
+  transform:translate(-50%,-50%);
+  width:0;height:0;z-index:8;pointer-events:none;
+}
+.gi-fc{
+  position:absolute;
+  width:118px;height:168px;
+  border-radius:14px;
+  left:-59px;top:-84px;
+  opacity:0;
+  transform-origin:50% 130%;
+  overflow:hidden;
+  /* drop-shadow: köşeyi takip eder */
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,0.75));
+}
+.gi-fc::after{
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,0.14) 50%,transparent 65%);
+  opacity:0;transition:opacity 0.4s;
+}
+.gi-fc.star::after{ opacity:1; }
+
+@keyframes cardDrop{
+  0%  { opacity:0; transform:var(--from) scale(0.6); }
+  68% { opacity:1; transform:var(--mid)  scale(1.04); }
+  100%{ opacity:1; transform:var(--to)   scale(1); }
+}
+
+#gi-ring{
+  position:absolute;top:52%;left:50%;
+  width:280px;height:280px;
+  border-radius:50%;
+  transform:translate(-50%,-50%) scale(0);
+  opacity:0;pointer-events:none;z-index:7;
+  transition:transform 0.55s cubic-bezier(.2,.85,.3,1), opacity 0.55s ease;
+  filter:blur(6px);
+}
+#gi-ring.pop{ transform:translate(-50%,-50%) scale(2.5);opacity:0; }
+
+.ic{ display:none; }
+#intro-screen{ display:none!important; }
+#stack-overlay{ display:none!important; }
+
+/* ═══════════════════════════════════════════════════
+   GİRİŞ EKRANI CSS EFEKTLERİ — GPU hızlandırmalı
+   Canvas YOK — hepsi CSS transform + opacity
+═══════════════════════════════════════════════════ */
+
+/* Yüzen holografik partiküller — CSS only */
+.gi-particle{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  will-change:transform,opacity;
+  mix-blend-mode:screen;
+}
+@keyframes particleFloat{
+  0%  { transform:translateY(0)   translateX(0)   scale(1)    opacity:0; }
+  8%  { opacity:var(--pop); }
+  90% { opacity:var(--pop); }
+  100%{ transform:translateY(var(--dy)) translateX(var(--dx)) scale(var(--ds)); opacity:0; }
+}
+
+/* Işık huzmesi süpürme — tek büyük CSS efekti */
+#gi-beam{
+  position:absolute;
+  top:0;left:50%;
+  width:2px;height:100%;
+  transform:translateX(-50%) rotate(0deg);
+  background:linear-gradient(180deg,transparent 0%,var(--cc,#fff) 40%,transparent 100%);
+  opacity:0;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  filter:blur(8px);
+}
+#gi-beam.sweep{
+  animation:beamSweep 1.8s ease-in-out forwards;
+}
+@keyframes beamSweep{
+  0%  { opacity:0; transform:translateX(-50%) rotate(-35deg) scaleX(1); }
+  15% { opacity:0.4; }
+  50% { opacity:0.25; transform:translateX(-50%) rotate(0deg) scaleX(2.5); }
+  85% { opacity:0.1; }
+  100%{ opacity:0;   transform:translateX(-50%) rotate(35deg)  scaleX(1); }
+}
+
+/* Logo glitch kırmızı/mavi klon */
+#gi-glitch-r,#gi-glitch-b{
+  position:absolute;
+  font-family:'Syne','Arial Black','Helvetica Neue',sans-serif;
+  font-size:clamp(3.8rem,18vw,8rem);
+  font-weight:900;letter-spacing:-0.02em;
+  pointer-events:none;
+  opacity:0;
+  will-change:transform,opacity;
+}
+#gi-glitch-r{ color:rgba(255,40,40,0.5); }
+#gi-glitch-b{ color:rgba(40,80,255,0.5); }
+@keyframes glitchR{
+  0%,100%{ transform:translate(-48%,-50%); opacity:0; }
+  10%{ transform:translate(-50%,-50%) skewX(-2deg); opacity:0.6; }
+  20%{ transform:translate(-46%,-50%); opacity:0; }
+  30%{ transform:translate(-48%,-50%); opacity:0.4; }
+  40%{ transform:translate(-52%,-49%); opacity:0; }
+}
+@keyframes glitchB{
+  0%,100%{ transform:translate(-52%,-50%); opacity:0; }
+  10%{ transform:translate(-50%,-50%) skewX(2deg); opacity:0.55; }
+  25%{ transform:translate(-54%,-50%); opacity:0; }
+  35%{ transform:translate(-52%,-50%); opacity:0.35; }
+  50%{ transform:translate(-48%,-51%); opacity:0; }
+}
+#gi-glitch-r.active{ animation:glitchR 0.5s ease forwards; }
+#gi-glitch-b.active{ animation:glitchB 0.5s ease 0.05s forwards; }
+
+/* Kare tarama - tum ekrani 6×8 grida bol, kare kare ac */
+#gi-grid-reveal{
+  position:absolute;inset:0;z-index:16;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:repeat(8,1fr);
+  pointer-events:none;
+}
+.gi-cell{
+  background:#000;
+  opacity:1;
+}
+.gi-cell.open{
+  opacity:0;
+  transition:opacity 0.28s ease var(--cd,0s);
+}
+
+/* Holografik shimmer line (logo altinda) */
+#gi-shimmer{
+  position:absolute;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,transparent,var(--cc,#fff),transparent);
+  filter:blur(1px);
+  left:50%;transform:translateX(-50%);
+  top:calc(50% + clamp(3rem,9vw,4rem) + 12px);
+  transition:width 0.6s cubic-bezier(.22,1,.36,1) 0s, opacity 0.4s ease;
+  opacity:0;
+  pointer-events:none;z-index:12;
+}
+#gi-shimmer.show{ width:55%;opacity:1; }
+
+@keyframes giIconBreathe{
+  0%,100%{ transform:scale(1) rotate(0deg); filter:drop-shadow(0 0 28px var(--cc)) drop-shadow(0 0 60px var(--cc,#fff)88); }
+  50%    { transform:scale(1.08) rotate(3deg); filter:drop-shadow(0 0 45px var(--cc)) drop-shadow(0 0 90px var(--cc,#fff)); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   KART STACKING OVERLAy — oyun başlangıç animasyonu
+   Referans: GSAP ScrollTrigger stacking cards (filipz bNNjwdE)
+   
+   Yapı:
+   #stack-overlay  → tam ekran, koyu arka plan
+     #stack-scene  → perspective sahne, ortalanmış
+       .sc         → her kart, birbirini takip ederek üst üste yığılır
+                     Her kart gelirken öncekiler scale küçülür (GSAP mantığı)
+       #stack-main → en üstteki "asıl" kart — öne fırlar
+═══════════════════════════════════════════════════════════════ */
+#stack-overlay{
+  position:fixed;inset:0;z-index:600;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0);
+  pointer-events:none;
+  visibility:hidden;
+}
+#stack-overlay.active{
+  visibility:visible;pointer-events:all;
+}
+
+/* ── Arka plan blur/koyu efekt */
+#stack-overlay::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.65) 100%);
+  backdrop-filter:blur(10px) saturate(0.7);
+  opacity:0;
+  transition:opacity 0.6s ease;
+}
+#stack-overlay.active::before{ opacity:1; }
+
+/* Sahne */
+#stack-scene{
+  position:relative;
+  width:200px;height:290px;
+  perspective:900px;
+  perspective-origin:50% 35%;
+  z-index:2;
+}
+
+/* Her kart — başlangıçta ekranın üstünde, görünmez */
+.sc{
+  position:absolute;
+  left:50%;top:50%;
+  width:168px;height:240px;
+  margin-left:-84px;margin-top:-120px;
+  border-radius:18px;
+  background-size:cover;background-repeat:no-repeat;
+  border:1.5px solid rgba(255,255,255,0.15);
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0;
+  /* GSAP ref: her kart yukarıdan gelir */
+  transform:perspective(900px) translateY(-120vh) rotateX(40deg) scale(0.8);
+  will-change:transform,opacity;
+  transform-origin:center bottom;
+}
+
+/* Giriş animasyonu — yukarıdan iner, deste pozisyonuna oturur */
+/* transition: JS tarafından inline olarak set edilir (her kart farklı timing) */
+
+/* Deste'deki en üst kart öne fırlar */
+@keyframes stackMainRise{
+  0%  {transform:perspective(900px) translateY(0) translateZ(0) rotateX(0deg) scale(1);}
+  32% {transform:perspective(900px) translateY(-30px) translateZ(90px) rotateX(-9deg) scale(1.16);}
+  62% {transform:perspective(900px) translateY(-12px) translateZ(46px) rotateX(-3deg) scale(1.08);}
+  82% {transform:perspective(900px) translateY(-10px) translateZ(40px) rotateX(-1deg) scale(1.072);}
+  100%{transform:perspective(900px) translateY(-11px) translateZ(42px) rotateX(0deg) scale(1.075);}
+}
+
+/* Deste solar — overlay kapanır */
+@keyframes stackFadeOut{
+  from{opacity:1;}
+  to  {opacity:0;}
+}
+
+/* ═══ MENÜ — YENİ GİRİŞ ANİMASYONU ═══ */
+.menu-wrap{
+  position:fixed;inset:0;z-index:50;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:var(--menu-bg);backdrop-filter:blur(24px);
+  transition:opacity 0.5s,visibility 0.5s;
+  overflow-y:auto;padding:2rem 0;
+}
+.menu-wrap.gone{opacity:0;visibility:hidden;pointer-events:none;}
+
+/* Başlık — yeni sinematik giriş */
+.menu-title{
+  font-family:var(--display-font);
+  font-size:clamp(3rem,9vw,4.5rem);font-weight:900;
+  color:var(--text-main);line-height:1;margin-bottom:0.2em;
+  opacity:0;
+  animation:menuTitleIn 1.1s cubic-bezier(.22,1,.36,1) 0.15s forwards;
+}
+@keyframes menuTitleIn{
+  0%  {opacity:0;transform:translateY(40px) scale(0.85);filter:blur(14px);}
+  45% {opacity:1;filter:blur(1px);}
+  72% {transform:translateY(-4px) scale(1.012);}
+  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+}
+body.t-night .menu-title{letter-spacing:-0.02em;}
+body.t-candy .menu-title{letter-spacing:0.02em;}
+body.t-forest .menu-title{font-style:italic;}
+.menu-title .accent-dot{color:var(--accent);}
+
+.menu-rule{
+  width:56px;height:3px;background:var(--gradient);border-radius:4px;margin:0.6rem auto 0.5rem;
+  opacity:0;transform:scaleX(0);
+  animation:menuRuleIn 0.7s cubic-bezier(.22,1,.36,1) 0.55s forwards;
+}
+@keyframes menuRuleIn{
+  from{opacity:0;transform:scaleX(0);}
+  to  {opacity:1;transform:scaleX(1);}
+}
+.menu-sub{
+  font-size:0.68rem;font-weight:600;color:var(--text-dim);letter-spacing:0.45em;text-transform:uppercase;
+  margin-bottom:1.6rem;
+  opacity:0;
+  animation:menuSubIn 0.6s ease 0.75s forwards;
+}
+@keyframes menuSubIn{
+  from{opacity:0;transform:translateY(10px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+
+/* Butonlar — cascade giriş */
+.menu-btns{display:flex;flex-direction:column;gap:0.8rem;width:min(330px,91vw);}
+.menu-btn{
+  position:relative;overflow:hidden;
+  padding:1.1rem 1.6rem;
+  background:var(--surface);
+  border:1.5px solid var(--border-color);
+  border-radius:18px;color:var(--text-main);
+  font-family:var(--body-font);font-size:0.98rem;font-weight:700;
+  cursor:pointer;
+  transition:transform 0.22s cubic-bezier(.34,1.56,.64,1),box-shadow 0.22s,border-color 0.22s;
+  box-shadow:0 3px 18px var(--shadow-color),inset 0 1px 0 rgba(255,255,255,0.08);
+  display:flex;align-items:center;gap:0.9rem;
+  text-align:left;min-height:64px;
+  opacity:0;
+  animation:menuBtnIn 0.55s cubic-bezier(.22,1,.36,1) var(--btn-d,1s) forwards;
+}
+@keyframes menuBtnIn{
+  from{opacity:0;transform:translateX(-30px);filter:blur(5px);}
+  to  {opacity:1;transform:translateX(0);filter:blur(0);}
+}
+.menu-btn:nth-child(1){--btn-d:0.92s;}
+.menu-btn:nth-child(2){--btn-d:1.02s;}
+.menu-btn:nth-child(3){--btn-d:1.12s;}
+.menu-btn:nth-child(4){--btn-d:1.22s;}
+.menu-btn:nth-child(5){--btn-d:1.32s;}
+.menu-btn:nth-child(6){--btn-d:1.42s;}
+.menu-btn:nth-child(7){--btn-d:1.52s;}
+
+.menu-btn::before{content:'';position:absolute;inset:0;background:var(--gradient);opacity:0;transition:opacity 0.25s;}
+.menu-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px var(--glow);border-color:var(--accent);}
+.menu-btn:hover::before{opacity:0.06;}
+.menu-btn:active{transform:translateY(0);}
+
+/* Menüye dönüldüğünde animasyonları sıfırla */
+.menu-wrap.gone .menu-title,
+.menu-wrap.gone .menu-rule,
+.menu-wrap.gone .menu-sub,
+.menu-wrap.gone .menu-btn{
+  opacity:0;animation:none;
+}
+
+/* Emoji arka plan + hover 3D büyüme */
+.btn-bg-emoji{
+  position:absolute;right:-4px;top:50%;transform:translateY(-50%);
+  font-size:3.2rem;opacity:0.09;pointer-events:none;z-index:0;line-height:1;
+  transition:transform 0.35s cubic-bezier(.34,1.56,.64,1),opacity 0.3s,filter 0.3s;
+  filter:blur(1px);transform-origin:center;
+  transform:translateY(-50%) scale(1) translateZ(0);
+}
+.menu-btn:hover .btn-bg-emoji{
+  transform:translateY(-50%) scale(1.55) translateZ(40px) rotate(-8deg);
+  opacity:0.22;
+  filter:drop-shadow(0 0 12px var(--accent)) blur(0px);
+}
+
+.btn-icon{font-size:1.3rem;position:relative;z-index:1;}
+.btn-label{position:relative;z-index:1;flex:1;}
+.btn-badge{
+  position:relative;z-index:1;
+  font-size:0.5rem;font-weight:800;letter-spacing:0.12em;
+  background:var(--gradient);color:#fff;
+  padding:0.15rem 0.45rem;border-radius:100px;text-transform:uppercase;
+}
+
+/* ═══ KART ═══ */
+.card-container{
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;z-index:10;
+}
+.card-num-label{
+  font-family:var(--body-font);font-size:0.52rem;font-weight:700;
+  color:var(--text-dim);letter-spacing:0.4em;text-transform:uppercase;
+  margin-top:0.5rem;
+}
+.card-wrapper{
+  position:absolute;
+  left:0; top:0;
+  width:168px;height:240px;
+  cursor:grab;
+  perspective:1200px;transform-style:preserve-3d;
+  --mx:50%;--my:50%;--posx:50%;--posy:50%;--o:0.38;
+  --bend-x:0deg;--bend-y:0deg;--sx:1;--sy:1;
+  z-index:10;
+}
+.card-wrapper:active{cursor:grabbing;}
+.card-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform 0.85s cubic-bezier(0.4,0,0.2,1);
+  transform-style:preserve-3d;border-radius:18px;
+}
+.is-dragging{transition:none!important;}
+.is-dragging .card-inner{
+  transition:none!important;
+  transform:perspective(1000px) rotateX(var(--bend-y)) rotateY(var(--bend-x)) scaleX(var(--sx)) scaleY(var(--sy));
+}
+.is-flipped.dir-right  .card-inner{transform:rotateY(180deg);}
+.is-flipped.dir-left   .card-inner{transform:rotateY(-180deg);}
+.is-flipped.dir-bottom .card-inner{transform:rotateX(-180deg);}
+.is-flipped.dir-top    .card-inner{transform:rotateX(180deg);}
+
+.card-face{
+  position:absolute;inset:0;border-radius:18px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  overflow:hidden;
+  /* Kalın kart kenar efekti */
+  box-shadow:
+    0 2px 0 1px rgba(255,255,255,0.06) inset,
+    0 -2px 0 1px rgba(0,0,0,0.35) inset,
+    2px 0 0 1px rgba(255,255,255,0.04) inset,
+    -2px 0 0 1px rgba(0,0,0,0.2) inset;
+}
+.card-back{transform:rotateY(180deg);}
+.dir-left  .card-back{transform:rotateY(-180deg);}
+.dir-bottom .card-back{transform:rotateX(-180deg);}
+.dir-top   .card-back{transform:rotateX(180deg);}
+
+.card-front{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  border:1.5px solid var(--border-color);
+}
+/* Eskitilmiş kart: hafif grain dokusu overlay */
+.card-front::after{
+  content:'';
+  position:absolute;inset:0;border-radius:16px;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(0,0,0,0.03) 0,rgba(0,0,0,0.03) 1px,transparent 1px,transparent 4px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 6px);
+  mix-blend-mode:overlay;
+  pointer-events:none;z-index:9;
+}
+.card-stripe{ display:none; }
+
+/* ── Deste ghost kartları (eski, kullanılmıyor) ── */
+.card-deck-ghost{ display:none; }
+
+/* ══════════════════════════════════════════════════════
+   DESTE SİSTEMİ v8
+   
+   .card-scene        → 168×260px, perspective container
+     .deck-shadow     → perspektif gölgesi (kalın, aşağı eğik)
+     .ghost-layer     → tek bir "deste kalınlığı" illüzyonu
+     .card-wrapper    → gerçek kart, z-index:10, clip yok
+══════════════════════════════════════════════════════ */
+.card-scene{
+  position:relative;
+  width:168px;
+  height:260px; /* kart 240 + alt boşluk */
+  flex-shrink:0;
+}
+
+/* Perspektif gölgesi — masanın yüzeyine yansıyan kalın gölge */
+.deck-shadow{
+  position:absolute;
+  left:50%; bottom:-8px;
+  transform:translateX(-50%);
+  width:148px; height:28px;
+  background:radial-gradient(ellipse 80% 100% at 50% 0%,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.25) 45%,
+    transparent 100%);
+  filter:blur(6px);
+  z-index:1;
+  pointer-events:none;
+  border-radius:50%;
+}
+
+/* Ghost katmanı — tek kart illüzyonu, kalınlık hissi */
+.ghost-layer{
+  position:absolute;
+  left:0; top:0;
+  width:168px; height:240px;
+  border-radius:18px;
+  pointer-events:none;
+  z-index:2;
+  /* Taluska: CSS 3D ile hafif aşağı-arkaya */
+  transform-origin:50% 100%;
+  transform:perspective(600px) rotateX(2deg) translateY(3px) translateX(-2px) rotate(-0.6deg) scale(0.978);
+  opacity:0.62;
+  filter:saturate(0.2) brightness(0.5);
+  transition:transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+}
+/* İkinci ghost — en arka */
+.ghost-layer2{
+  position:absolute;
+  left:0; top:0;
+  width:168px; height:240px;
+  border-radius:18px;
+  pointer-events:none;
+  z-index:1;
+  transform-origin:50% 100%;
+  transform:perspective(600px) rotateX(2deg) translateY(6px) translateX(-4px) rotate(-1.4deg) scale(0.958);
+  opacity:0.38;
+  filter:saturate(0.1) brightness(0.35);
+  transition:transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+}
+
+/* Gerçek aktif kart */
+.card-scene > .card-wrapper{
+  position:absolute;
+  left:0; top:0;
+  z-index:10;
+}
+/* resetCard sırasında inline style yazılır, bu fallback */
+
+/* ── Kart geçiş animasyonları ──
+   Aktif kart kapandıktan sonra hafif sağa kayar,
+   ghost'lardan biri öne çıkar (2. kart belirir),
+   eski aktif ghost'ların arkasına iner.
+*/
+
+/* 1) Aktif kart sağa-arkaya retire */
+@keyframes cardRetireRight{
+  0%  {transform:translateX(0) translateY(0) rotate(0deg) scale(1); opacity:1; z-index:10;}
+  35% {transform:translateX(18px) translateY(-8px) rotate(4deg) scale(0.96); opacity:0.9;}
+  70% {transform:translateX(-4px) translateY(8px) rotate(-1.5deg) scale(0.968); opacity:0.62; filter:saturate(0.2) brightness(0.5);}
+  100%{transform:translateX(-2px) translateY(3px) rotate(-0.6deg) scale(0.978); opacity:0.62; filter:saturate(0.2) brightness(0.5);}
+}
+
+/* 2) Ghost 1 (ön) → aktif kart pozisyonuna yükselir */
+@keyframes ghostToActive{
+  0%  {transform:perspective(600px) rotateX(2deg) translateY(3px) translateX(-2px) rotate(-0.6deg) scale(0.978); opacity:0.62; filter:saturate(0.2) brightness(0.5);}
+  30% {transform:perspective(600px) rotateX(-3deg) translateY(-22px) rotate(0.4deg) scale(1.04); opacity:1; filter:none;}
+  62% {transform:translateY(4px) rotate(-0.2deg) scale(0.99); filter:none; opacity:1;}
+  100%{transform:translateX(0) translateY(0) rotate(0deg) scale(1); filter:none; opacity:1;}
+}
+
+/* 3) Ghost 2 (arka) → ghost 1 pozisyonuna kayar */
+@keyframes ghostShiftForward{
+  from{transform:perspective(600px) rotateX(2deg) translateY(6px) translateX(-4px) rotate(-1.4deg) scale(0.958); opacity:0.38; filter:saturate(0.1) brightness(0.35);}
+  to  {transform:perspective(600px) rotateX(2deg) translateY(3px) translateX(-2px) rotate(-0.6deg) scale(0.978); opacity:0.62; filter:saturate(0.2) brightness(0.5);}
+}
+
+.card-retiring   { animation:cardRetireRight 0.52s cubic-bezier(.4,0,.2,1) forwards; }
+.ghost-activating{ animation:ghostToActive   0.68s cubic-bezier(.22,1,.36,1) 0.18s forwards; z-index:9!important; }
+.ghost-shifting  { animation:ghostShiftForward 0.5s cubic-bezier(.22,1,.36,1) 0.22s forwards; }
+
+/* ════════════════════════════════════════════════════════
+   GERÇEKÇİ HOLOGRAFİK FOLYO EFEKTİ
+   ─ @property ile gerçek CSS animasyonu
+   ─ Tam spektrum rainbow, mouse'a reaktif
+   ─ Foil parlaması + glitter noktaları
+   ─ Blend-mode: color-dodge + screen
+════════════════════════════════════════════════════════ */
+
+/* @property: CSS custom property'leri animasyona alır */
+@property --holo-pos-x { syntax:'<percentage>'; inherits:true; initial-value:0%; }
+@property --holo-pos-y { syntax:'<percentage>'; inherits:true; initial-value:0%; }
+@property --foil-angle { syntax:'<angle>';      inherits:true; initial-value:105deg; }
+@property --q-angle    { syntax:'<angle>';      inherits:true; initial-value:115deg; }
+
+/* Ana hologram katmanı — desenin üstüne rainbow folyo */
+.card-holo{
+  position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  /* Tam spektrum gökkuşağı şeridi — gerçek prizma etkisi */
+  background:
+    repeating-linear-gradient(
+      var(--foil-angle),
+      hsl(0,  100%,65%) 0%,
+      hsl(32, 100%,62%) 5%,
+      hsl(58, 100%,58%) 10%,
+      hsl(105,100%,52%) 15%,
+      hsl(160,100%,55%) 20%,
+      hsl(198,100%,60%) 25%,
+      hsl(228,100%,65%) 30%,
+      hsl(265,100%,65%) 35%,
+      hsl(295,100%,62%) 40%,
+      hsl(330,100%,62%) 45%,
+      hsl(360,100%,65%) 50%,
+      hsl(0,  100%,65%) 55%
+    );
+  background-size:350% 350%;
+  background-position:var(--holo-pos-x) var(--holo-pos-y);
+  mix-blend-mode:color-dodge;
+  opacity:calc(var(--o,0.38) * 1.4);
+  filter:brightness(1.1) contrast(1.6) saturate(1.3) hue-rotate(var(--card-hue,0deg));
+  transition:opacity .1s, background-position .06s;
+  /* Varsayılan: sabit pozisyon, animasyon durmuş */
+  animation:holoShift 7s ease-in-out infinite;
+  animation-play-state:paused;
+}
+@keyframes holoShift{
+  0%  { --foil-angle:105deg; --holo-pos-x:10%;  --holo-pos-y:20%; }
+  20% { --foil-angle:145deg; --holo-pos-x:80%;  --holo-pos-y:15%; }
+  40% { --foil-angle:185deg; --holo-pos-x:85%;  --holo-pos-y:78%; }
+  60% { --foil-angle:225deg; --holo-pos-x:20%;  --holo-pos-y:82%; }
+  80% { --foil-angle:265deg; --holo-pos-x:15%;  --holo-pos-y:30%; }
+  100%{ --foil-angle:105deg; --holo-pos-x:10%;  --holo-pos-y:20%; }
+}
+
+/* Glitter katmanı — ince parlak noktalar */
+.card-glitter{
+  position:absolute;inset:0;border-radius:18px;z-index:4;pointer-events:none;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  background:
+    radial-gradient(circle 1px at 18% 28%, rgba(255,255,255,0.95) 0%, transparent 100%),
+    radial-gradient(circle 1px at 73% 17%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(circle 1px at 52% 68%, rgba(255,255,255,0.9)  0%, transparent 100%),
+    radial-gradient(circle 1px at 84% 72%, rgba(255,255,255,0.8)  0%, transparent 100%),
+    radial-gradient(circle 1px at 11% 77%, rgba(255,255,255,0.88) 0%, transparent 100%),
+    radial-gradient(circle 1px at 38% 12%, rgba(255,255,255,0.82) 0%, transparent 100%),
+    radial-gradient(circle 1px at 63% 85%, rgba(255,255,255,0.78) 0%, transparent 100%),
+    radial-gradient(circle 1px at 29% 52%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(circle 1px at 91% 44%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(circle 1px at 47% 38%, rgba(255,255,255,0.9)  0%, transparent 100%),
+    /* mouse-reactive halo */
+    radial-gradient(farthest-corner ellipse at var(--mx,50%) var(--my,50%),
+      rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.1) 20%, transparent 48%);
+  mix-blend-mode:screen;
+  opacity:calc(var(--o,0.38) * 0.65);
+  transition:opacity .1s;
+  animation:glitterPulse 3.2s ease-in-out infinite;
+}
+@keyframes glitterPulse{
+  0%,100%{ opacity:calc(var(--o,0.38) * 0.5); }
+  45%    { opacity:calc(var(--o,0.38) * 1.2); }
+}
+
+/* Foil şimşeği — ince beyaz band */
+.card-shine{
+  position:absolute;inset:0;border-radius:18px;z-index:5;pointer-events:none;
+  mix-blend-mode:overlay;
+  opacity:calc(var(--o,0.38) * 0.8);
+  background:
+    radial-gradient(farthest-corner ellipse at var(--mx,50%) var(--my,50%),
+      rgba(255,255,255,0.45) 0%,
+      rgba(255,255,255,0.06) 25%,
+      transparent 52%);
+  transition:opacity .1s;
+}
+/* Hareket sırasında hologram animasyonlu ve parlak */
+.card-wrapper.is-dragging .card-holo  { animation-duration:1.2s; animation-play-state:running; opacity:calc(var(--o,0.38)*2.2); }
+.card-wrapper.is-dragging .card-glitter{ opacity:calc(var(--o,0.38)*2); }
+.card-wrapper:hover .card-holo         { animation-duration:3s; animation-play-state:running; opacity:calc(var(--o,0.38)*1.8); }
+.deco-group{position:absolute;inset:0;border-radius:18px;z-index:6;isolation:isolate;pointer-events:none;}
+.card-deco{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.card-back-face{border:1.5px solid var(--border-color);}
+.card-deco{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.card-back-face{border:1.5px solid var(--border-color);}
+
+/* ════════════════════════════════════════════════════════
+   HOLOGRAFİK SORU İŞARETİ
+   — @property animasyonu ile dönen prizma renkleri
+   — Sparkle: random noktalar titreşir
+   — Tam spektrum, mouse pozisyonuna reaktif
+════════════════════════════════════════════════════════ */
+.cq-wrap{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-52%);
+  width:138px;height:138px;
+  display:flex;align-items:center;justify-content:center;
+  z-index:7;pointer-events:none;
+}
+.cq-base{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  /* Cinzel Decorative — gotik/antik soru isareti */
+  font-size:7.5rem;font-family:'Cinzel Decorative','Cinzel','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  font-weight:900;line-height:1;
+  opacity:0.12;
+  letter-spacing:-0.05em;
+}
+.cq-shine{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7.5rem;font-family:'Cinzel Decorative','Cinzel','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  font-weight:900;line-height:1;letter-spacing:-0.05em;
+  background:
+    repeating-linear-gradient(
+      var(--q-angle),
+      hsl(0,  100%,68%) 0%,
+      hsl(35, 100%,65%) 8%,
+      hsl(65, 100%,60%) 16%,
+      hsl(120,100%,55%) 24%,
+      hsl(175,100%,58%) 32%,
+      hsl(215,100%,65%) 40%,
+      hsl(260,100%,68%) 48%,
+      hsl(300,100%,65%) 56%,
+      hsl(340,100%,65%) 64%,
+      hsl(0,  100%,68%) 72%
+    );
+  background-size:280% 280%;
+  background-position:var(--holo-pos-x,50%) var(--holo-pos-y,50%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:brightness(1.35) saturate(1.2);
+  animation:qHoloSpin 5s ease-in-out infinite;
+  transition:background-position .08s;
+}
+@keyframes qHoloSpin{
+  0%  { --q-angle:115deg; background-position:10% 20%;  opacity:0.7; }
+  25% { --q-angle:195deg; background-position:80% 15%;  opacity:1;   }
+  50% { --q-angle:275deg; background-position:85% 80%;  opacity:0.75;}
+  75% { --q-angle:355deg; background-position:15% 82%;  opacity:1;   }
+  100%{ --q-angle:115deg; background-position:10% 20%;  opacity:0.7; }
+}
+/* Sparkle katmanı — titreşen ışık noktaları */
+.cq-sparkle{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7.5rem;font-family:'Cinzel Decorative','Cinzel','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  font-weight:900;line-height:1;letter-spacing:-0.05em;
+  background:
+    radial-gradient(circle 1.5px at 28% 22%, rgba(255,255,255,1)   0%,transparent 100%),
+    radial-gradient(circle 1.5px at 70% 18%, rgba(255,255,255,0.9) 0%,transparent 100%),
+    radial-gradient(circle 1.5px at 55% 75%, rgba(255,255,255,1)   0%,transparent 100%),
+    radial-gradient(circle 1.5px at 16% 68%, rgba(255,255,255,0.85)0%,transparent 100%),
+    radial-gradient(circle 1.5px at 82% 60%, rgba(255,255,255,0.9) 0%,transparent 100%),
+    radial-gradient(circle 1px   at 42% 45%, rgba(255,255,255,0.8) 0%,transparent 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:qSparkleFlash 2.4s ease-in-out infinite;
+}
+@keyframes qSparkleFlash{
+  0%,100%{ opacity:0.2; filter:none; }
+  30%    { opacity:1;   filter:brightness(2.5) saturate(0); }
+  55%    { opacity:0.4; filter:none; }
+  80%    { opacity:0.9; filter:brightness(2) saturate(0); }
+}
+.card-wrapper:hover .cq-shine       { animation-duration:1.8s; filter:brightness(1.6) saturate(1.3); }
+.card-wrapper:hover .cq-sparkle     { animation-duration:0.9s; }
+.card-wrapper.is-dragging .cq-shine { animation-duration:1.2s; }
+
+/* ── Alt kart etiketi — kaldırıldı ── */
+.card-lbl{ display:none; }
+.card-title{ display:none; }
+.card-rule{ display:none; }
+
+/* ── Sürükleme gölgesi ── */
+.drag-shadow{
+  position:fixed;
+  width:168px;height:240px;
+  border-radius:18px;
+  pointer-events:none;
+  z-index:8;
+  opacity:0;
+  background:transparent;
+  box-shadow:0 28px 60px rgba(0,0,0,0.55),0 12px 24px rgba(0,0,0,0.3);
+  transition:opacity 0.2s;
+  transform-origin:center;
+}
+.drag-shadow.visible{opacity:1;}
+
+/* Animasyonlar */
+@keyframes holoFloat{
+  0%  {--posx:22%;--posy:28%;--o:.18} 20%{--posx:78%;--posy:18%;--o:.44}
+  40% {--posx:72%;--posy:78%;--o:.22} 60%{--posx:28%;--posy:72%;--o:.48}
+  80% {--posx:58%;--posy:32%;--o:.24} 100%{--posx:22%;--posy:28%;--o:.18}
+}
+@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(0.5deg)}}
+.floating{animation:cardFloat 5s ease-in-out infinite,holoFloat 8s ease-in-out infinite!important;}
+
+@keyframes shake{
+  0%,100%{transform:translate(0)} 15%{transform:translate(-2px,1px)} 30%{transform:translate(2px,-1px)}
+  45%{transform:translate(-2px,-1px)} 60%{transform:translate(2px,1px)} 75%{transform:translate(-1px,2px)}
+}
+.shake{animation:shake .4s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ═══ OVERLAY — Kart tasarımına uyumlu ═══ */
+.overlay{
+  position:fixed;inset:0;z-index:100;
+  display:flex;justify-content:center;align-items:center;
+  cursor:pointer;pointer-events:none;opacity:0;overflow:hidden;
+}
+/* Arka plan kart rengine göre JS ile set edilecek */
+.overlay.in-right {animation:inRight .5s cubic-bezier(.22,1,.36,1) forwards;pointer-events:all;}
+.overlay.in-left  {animation:inLeft  .5s cubic-bezier(.22,1,.36,1) forwards;pointer-events:all;}
+.overlay.in-down  {animation:inDown  .5s cubic-bezier(.22,1,.36,1) forwards;pointer-events:all;}
+.overlay.in-up    {animation:inUp    .5s cubic-bezier(.22,1,.36,1) forwards;pointer-events:all;}
+.overlay.out-right{animation:outRight .4s cubic-bezier(.4,0,1,1) forwards;}
+.overlay.out-left {animation:outLeft  .4s cubic-bezier(.4,0,1,1) forwards;}
+.overlay.out-down {animation:outDown  .4s cubic-bezier(.4,0,1,1) forwards;}
+.overlay.out-up   {animation:outUp    .4s cubic-bezier(.4,0,1,1) forwards;}
+@keyframes inRight {from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes inLeft  {from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes inDown  {from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes inUp    {from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes outRight{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}
+@keyframes outLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-100%);opacity:0}}
+@keyframes outDown {from{transform:translateY(0);opacity:1}to{transform:translateY(100%);opacity:0}}
+@keyframes outUp   {from{transform:translateY(0);opacity:1}to{transform:translateY(-100%);opacity:0}}
+
+/* Overlay hologram panel */
+.overlay-holo-panel{
+  position:absolute;inset:0;
+  opacity:0.07;pointer-events:none;z-index:0;
+  background-size:200% 700%;
+}
+.overlay-stripe{position:absolute;z-index:6;background:var(--gradient);}
+.overlay .overlay-stripe{top:0;left:0;right:0;height:5px;width:auto;}
+.overlay.in-right .overlay-stripe,.overlay.out-right .overlay-stripe{top:auto;bottom:0;}
+.overlay.in-left  .overlay-stripe,.overlay.out-left  .overlay-stripe{top:0;bottom:0;right:auto;width:5px;height:auto;}
+.overlay.in-up    .overlay-stripe,.overlay.out-up    .overlay-stripe{top:auto;bottom:0;}
+
+/* Overlay köşe süs */
+.ov-orn{
+  position:absolute;font-size:1.5rem;color:var(--border-color);
+  font-family:var(--display-font);font-weight:900;pointer-events:none;line-height:1;z-index:5;
+}
+.ov-orn.tl{top:1.2rem;left:1.4rem;}
+.ov-orn.tr{top:1.2rem;right:1.4rem;transform:scaleX(-1);}
+.ov-orn.bl{bottom:1.2rem;left:1.4rem;transform:scaleY(-1);}
+.ov-orn.br{bottom:1.2rem;right:1.4rem;transform:scale(-1);}
+
+/* Overlay kart deseni — sağ/sol köşe dekoratif kart görseli */
+.ov-card-deco{
+  position:absolute;
+  width:80px;height:115px;
+  border-radius:9px;
+  opacity:0.08;
+  pointer-events:none;z-index:1;
+  border:1px solid;
+  bottom:2rem;right:1.5rem;
+  transform:rotate(15deg);
+}
+.ov-card-deco2{
+  position:absolute;
+  width:80px;height:115px;
+  border-radius:9px;
+  opacity:0.05;
+  pointer-events:none;z-index:0;
+  border:1px solid;
+  bottom:2.8rem;right:2.2rem;
+  transform:rotate(22deg);
+}
+
+.ov-body{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  position:absolute;z-index:2;
+  width:100vw;height:100dvh;padding:2.5rem 2rem;gap:0;
+}
+.overlay.in-right  .ov-body,.overlay.out-right .ov-body{transform:rotate(-90deg);}
+.overlay.in-left   .ov-body,.overlay.out-left  .ov-body{transform:rotate(90deg);}
+.overlay.in-up     .ov-body,.overlay.out-up    .ov-body{transform:rotate(180deg);}
+
+.ov-badge{
+  display:inline-flex;align-items:center;gap:0.3rem;
+  font-family:var(--body-font);font-size:0.58rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--accent);border:1.5px solid var(--border-color);
+  padding:0.2rem 0.65rem;border-radius:100px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent);margin-bottom:0.9rem;
+}
+.ov-emoji{
+  font-size:3rem;line-height:1;margin-bottom:1rem;
+  filter:drop-shadow(0 4px 16px var(--glow));
+  animation:emoPop .6s cubic-bezier(.34,1.56,.64,1) both .2s;opacity:0;
+}
+@keyframes emoPop{from{transform:scale(.25) rotate(-15deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.ov-line{width:44px;height:1.5px;background:var(--gradient);margin:0.9rem 0;border-radius:2px;}
+.magic-text{
+  font-family:var(--display-font);
+  font-size:clamp(1.05rem,5vmin,1.8rem);
+  font-weight:700;line-height:1.65;
+  color:var(--text-main);text-align:center;
+  min-height:2.8em;max-width:min(420px,82vmin);
+}
+.mc{display:inline;opacity:0;animation:charIn .72s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes charIn{
+  0%  {opacity:0;filter:blur(4px);transform:scale(1.18);color:var(--accent);}
+  45% {opacity:0.85;filter:blur(0.8px);transform:scale(1.01);}
+  100%{opacity:1;filter:blur(0);transform:scale(1);color:var(--text-main);}
+}
+.ov-num{font-family:var(--body-font);font-size:0.58rem;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-dim);margin-top:1rem;}
+.ov-hint{font-family:var(--body-font);font-size:0.54rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-dim);margin-top:1.2rem;white-space:nowrap;animation:hPulse 3s ease-in-out infinite 2.5s;}
+@keyframes hPulse{0%,100%{opacity:.3}50%{opacity:.9}}
+
+/* ═══ AYARLAR ═══ */
+.gear-btn{
+  position:fixed;top:1.2rem;right:1.2rem;z-index:60;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--border-color);
+  color:var(--text-mid);font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 4px 18px var(--shadow-color);transition:all .3s;
+}
+.gear-btn:hover{border-color:var(--accent);color:var(--accent);transform:rotate(45deg) scale(1.05);}
+
+.sheet-backdrop{
+  position:fixed;inset:0;z-index:80;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(8px);
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.sheet-backdrop.open{opacity:1;visibility:visible;}
+.settings-sheet{
+  width:100%;max-width:500px;background:var(--surface);
+  border-radius:28px 28px 0 0;padding:0 1.4rem 2.5rem;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1);
+  max-height:88dvh;overflow-y:auto;box-shadow:0 -8px 40px var(--shadow-color);
+}
+.sheet-backdrop.open .settings-sheet{transform:translateY(0);}
+.sheet-pill{width:36px;height:4px;border-radius:2px;background:var(--border-color);margin:1rem auto 1.2rem;}
+.sheet-title{font-family:var(--display-font);font-size:1.15rem;font-weight:700;color:var(--text-main);text-align:center;margin-bottom:1.4rem;}
+.s-label{display:block;font-family:var(--body-font);font-size:0.6rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--text-mid);margin-bottom:0.75rem;}
+.theme-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1.4rem;}
+.t-swatch{display:flex;flex-direction:column;align-items:center;gap:0.35rem;cursor:pointer;}
+.t-circle{width:48px;height:48px;border-radius:50%;border:2.5px solid transparent;position:relative;overflow:hidden;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.t-circle::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(0,0,0,.5);opacity:0;transition:opacity .2s;}
+.t-swatch.active .t-circle{transform:scale(1.12);}
+.t-swatch.active .t-circle::after{opacity:1;}
+.t-name{font-family:var(--body-font);font-size:0.58rem;font-weight:600;color:var(--text-mid);}
+.card-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:0.5rem;}
+.c-thumb{display:flex;flex-direction:column;align-items:center;gap:0.35rem;cursor:pointer;}
+.c-mini{width:38px;height:54px;border-radius:8px;border:2px solid var(--border-color);overflow:hidden;position:relative;transition:all .25s;}
+.c-thumb.active .c-mini{border-color:var(--accent);transform:scale(1.1);box-shadow:0 4px 14px var(--glow);}
+.c-thumb.active .c-mini::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.5);background:rgba(0,0,0,.15);}
+.c-name{font-family:var(--body-font);font-size:0.52rem;font-weight:600;color:var(--text-mid);text-align:center;}
+
+/* ═══ UI BUTONLARI ═══ */
+/* Menüye dön — sol üst */
+.back-btn{
+  position:fixed;top:1.2rem;left:1.2rem;z-index:40;
+  background:var(--surface);border:1.5px solid var(--border-color);border-radius:100px;
+  color:var(--text-mid);padding:.38rem 0.9rem;
+  font-family:var(--body-font);font-size:.6rem;font-weight:700;
+  letter-spacing:.12em;cursor:pointer;transition:all .3s;
+  opacity:0;visibility:hidden;box-shadow:0 2px 10px var(--shadow-color);
+}
+.back-btn.show{opacity:1;visibility:visible;}
+.back-btn:hover{border-color:var(--accent);color:var(--text-main);}
+
+/* Önceki soru — sol alt */
+.prev-btn{
+  position:fixed;bottom:1.4rem;left:1.4rem;z-index:40;
+  background:var(--surface);border:1.5px solid var(--border-color);border-radius:100px;
+  color:var(--text-mid);padding:.38rem 0.85rem;
+  font-family:var(--body-font);font-size:.6rem;font-weight:700;
+  letter-spacing:.1em;cursor:pointer;transition:all .3s;
+  opacity:0;visibility:hidden;box-shadow:0 2px 10px var(--shadow-color);
+  display:flex;align-items:center;gap:0.3rem;
+}
+.prev-btn.show{opacity:1;visibility:visible;}
+.prev-btn:hover{border-color:var(--accent);color:var(--accent);}
+.prev-btn:disabled{opacity:0.25;pointer-events:none;}
+
+/* Önceki soru overlay */
+.prev-overlay{
+  position:fixed;inset:0;z-index:150;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);
+  display:flex;justify-content:center;align-items:center;
+  animation:fadeIn .3s ease;cursor:pointer;
+}
+.prev-card{
+  background:var(--surface);border:1.5px solid var(--border-color);
+  border-radius:24px;padding:2rem 2.2rem;max-width:min(380px,88vw);
+  text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.4);
+  animation:slideUp .35s cubic-bezier(.22,1,.36,1);
+}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.prev-card-label{font-family:var(--body-font);font-size:0.56rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-dim);margin-bottom:1rem;}
+.prev-card-emoji{font-size:2.2rem;margin-bottom:0.8rem;line-height:1;}
+.prev-card-q{font-family:var(--display-font);font-size:1.1rem;font-weight:700;color:var(--text-main);line-height:1.6;margin-bottom:1.2rem;}
+.prev-card-close{font-family:var(--body-font);font-size:0.58rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);}
+
+/* Sayaç */
+.counter{
+  position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);z-index:40;
+  background:var(--surface);border:1.5px solid var(--border-color);
+  border-radius:100px;padding:.38rem 1rem;
+  display:none;align-items:center;gap:.28rem;
+  box-shadow:0 2px 10px var(--shadow-color);
+}
+.c-cur{font-family:var(--display-font);font-weight:700;font-size:1rem;color:var(--accent);}
+.c-sep{color:var(--text-dim);font-size:.75rem;}
+.c-tot{color:var(--text-mid);font-size:.75rem;font-weight:600;}
+
+.progress{
+  position:fixed;bottom:0;left:0;height:2.5px;
+  background:var(--gradient);width:0%;transition:width .12s linear;z-index:200;
+  box-shadow:0 0 10px var(--accent);
+}
+
+#hint{
+  position:fixed;bottom:4.5rem;left:0;right:0;
+  text-align:center;pointer-events:none;z-index:20;transition:opacity .5s;
+}
+
+/* ═══ GAME OVER ═══ */
+.game-over{
+  position:fixed;inset:0;z-index:200;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:color-mix(in srgb,var(--bg-a) 96%,transparent);
+  animation:fadeIn .6s ease;
+  gap:0;
+}
+.go-emoji{font-size:4.5rem;margin-bottom:0.6rem;animation:goEmojiBounce 1s cubic-bezier(.34,1.6,.64,1) .2s both;}
+@keyframes goEmojiBounce{0%{transform:scale(0) rotate(-20deg);opacity:0;}100%{transform:scale(1) rotate(0);opacity:1;}}
+.go-title{font-family:var(--display-font);font-size:2.5rem;font-weight:900;color:var(--text-main);margin-bottom:.3rem;animation:fadeIn .5s .35s both;}
+.go-sub{font-family:var(--body-font);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--text-mid);margin-bottom:2.2rem;animation:fadeIn .5s .45s both;}
+.go-btns{display:flex;flex-direction:column;align-items:center;gap:.75rem;width:min(310px,88vw);animation:fadeIn .5s .55s both;}
+.go-btn{
+  width:100%;
+  font-family:var(--body-font);font-weight:700;font-size:.82rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:1rem 1.6rem;background:var(--surface);
+  border:1.5px solid var(--border-color);border-radius:16px;
+  color:var(--text-main);cursor:pointer;
+  box-shadow:0 4px 18px var(--shadow-color);transition:all .25s;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+.go-btn.primary{
+  background:var(--accent);border-color:var(--accent);
+  color:#fff;box-shadow:0 4px 22px var(--glow);
+  font-size:.88rem;padding:1.1rem 1.6rem;
+}
+.go-btn:hover{border-color:var(--accent);transform:translateY(-2px);}
+.go-btn.primary:hover{transform:translateY(-2px);filter:brightness(1.1);}
+
+/* Kart karıştırma overlay */
+#shuffle-overlay{
+  position:fixed;inset:0;z-index:300;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.92);
+  pointer-events:none;visibility:hidden;
+}
+#shuffle-overlay.active{visibility:visible;pointer-events:all;}
+.shuffle-title{
+  font-family:'Cinzel Decorative','Cinzel','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  font-size:clamp(1.2rem,5vw,2rem);
+  color:#fff;letter-spacing:.12em;
+  margin-bottom:2rem;
+  opacity:0;animation:none;
+}
+#shuffle-cards{
+  position:relative;width:200px;height:220px;
+}
+.s-card{
+  position:absolute;
+  width:118px;height:168px;
+  border-radius:14px;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  box-shadow:0 12px 40px rgba(0,0,0,0.8);
+  will-change:transform;
+}
+.shuffle-ready{
+  font-family:var(--body-font);font-size:.72rem;
+  font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  margin-top:1.8rem;opacity:0;
+}
+</style>
+</head>
+<body class="t-night">
+
+<div class="bg-layer"></div>
+<div class="bg-lines"></div>
+<div class="vignette"></div>
+
+<!-- LOADING EKRANI -->
+<div id="loading-screen">
+  <div class="load-logo">İtiraf</div>
+  <div class="load-bar-wrap"><div class="load-bar" id="load-bar"></div></div>
+  <div class="load-sub">Yükleniyor...</div>
+</div>
+
+<!-- KADIFE MASA -->
+<div id="velvet-table"></div>
+<div id="velvet-light"></div>
+
+<!-- KART KARIŞTIRMA OVERLAY -->
+<div id="shuffle-overlay">
+  <div class="shuffle-title" id="shuffle-title">Desteler Karışıyor...</div>
+  <div id="shuffle-cards"></div>
+  <div class="shuffle-ready" id="shuffle-ready">Hazır!</div>
+</div>
+
+<!-- SİNEMATİK OYUN GİRİŞİ v18 -->
+<div id="game-intro">
+  <div id="gi-cover"></div>
+  <div id="gi-bg"></div>
+  <div id="gi-scan"></div>
+  <div id="gi-flash"></div>
+  <div id="gi-ring"></div>
+  <div id="gi-beam"></div>
+  <div id="gi-grid-reveal"></div>
+
+  <div id="gi-logo">
+    <div id="gi-glitch-r">İTİRAF</div>
+    <div id="gi-glitch-b">İTİRAF</div>
+    <div id="gi-letters"></div>
+    <div id="gi-kartlari">KARTLARI</div>
+    <div id="gi-shimmer"></div>
+  </div>
+
+  <div id="gi-cat">
+    <span class="gi-cat-icon" id="gi-icon"></span>
+    <span class="gi-cat-name" id="gi-name"></span>
+    <div  class="gi-cat-line"  id="gi-line"></div>
+    <span class="gi-cat-sub"   id="gi-csub"></span>
+  </div>
+
+  <div id="gi-fan"></div>
+</div>
+<!-- MENÜ -->
+<div id="menu" class="menu-wrap">
+  <h1 class="menu-title">İti<span class="accent-dot">raf</span></h1>
+  <div class="menu-rule"></div>
+  <p class="menu-sub">Kartı çevir · sırrını söyle</p>
+  <div class="menu-btns">
+    <button class="menu-btn" onclick="startGame('mixed')">
+      <span class="btn-bg-emoji">🎭</span>
+      <span class="btn-icon">🎭</span><span class="btn-label">Karışık Mod</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('male')">
+      <span class="btn-bg-emoji">👊</span>
+      <span class="btn-icon">👊</span><span class="btn-label">Erkekler</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('female')">
+      <span class="btn-bg-emoji">💅</span>
+      <span class="btn-icon">💅</span><span class="btn-label">Kızlar</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('fun')">
+      <span class="btn-bg-emoji">🎉</span>
+      <span class="btn-icon">🎉</span><span class="btn-label">Eğlence</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('adult')">
+      <span class="btn-bg-emoji">🔥</span>
+      <span class="btn-icon">🔥</span><span class="btn-label">+18</span>
+      <span class="btn-badge">18+</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('trust')">
+      <span class="btn-bg-emoji">🔒</span>
+      <span class="btn-icon">🔒</span><span class="btn-label">Zor &amp; Güven Testi</span>
+    </button>
+    <button class="menu-btn" onclick="startGame('date')">
+      <span class="btn-bg-emoji">💘</span>
+      <span class="btn-icon">💘</span><span class="btn-label">Çoklu Date</span>
+    </button>
+  </div>
+</div>
+
+<!-- OYUN ALANI -->
+<div id="game-area" style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;z-index:10;"></div>
+
+<!-- Sürükleme gölgesi -->
+<div class="drag-shadow" id="drag-shadow"></div>
+
+<!-- UI BUTONLARI -->
+<button id="back-btn" class="back-btn" onclick="returnToMenu()">← Menü</button>
+<button id="prev-btn" class="prev-btn" onclick="showPrevQuestion()" disabled>↩ Önceki</button>
+
+<div class="counter" id="counter">
+  <span class="c-cur" id="cur">1</span>
+  <span class="c-sep">/</span>
+  <span class="c-tot" id="tot">20</span>
+</div>
+<div id="hint">
+  <p style="color:var(--text-dim);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;font-family:var(--body-font);font-weight:600;">Kartı herhangi bir yöne sürükle</p>
+</div>
+<div class="progress" id="progress"></div>
+
+<!-- AYARLAR — SAĞ ÜST -->
+<button class="gear-btn" onclick="toggleSheet()" aria-label="Ayarlar">⚙️</button>
+<div class="sheet-backdrop" id="backdrop" onclick="closeSheetOuter(event)">
+  <div class="settings-sheet">
+    <div class="sheet-pill"></div>
+    <div class="sheet-title">Ayarlar ✨</div>
+    <span class="s-label">🎨 Tema</span>
+    <div class="theme-row" id="theme-row"></div>
+    <span class="s-label">🃏 Kart Tasarımı</span>
+    <div class="card-row" id="card-row"></div>
+  </div>
+</div>
+
+<script>
+const THEMES=[
+  {id:'t-coffee',cls:'t-coffee',name:'☕ Kahve',swatchGrad:'linear-gradient(135deg,#fdf6ec 40%,#c8962a)',swatchBorder:'#c8962a'},
+  {id:'t-night',cls:'t-night',name:'🌙 Gece',swatchGrad:'linear-gradient(135deg,#0d1117 40%,#a78bfa)',swatchBorder:'#a78bfa'},
+  {id:'t-candy',cls:'t-candy',name:'🍭 Şeker',swatchGrad:'linear-gradient(135deg,#fff5fb 40%,#ec4899)',swatchBorder:'#ec4899'},
+  {id:'t-forest',cls:'t-forest',name:'🌿 Doğa',swatchGrad:'linear-gradient(135deg,#0f1a0e 40%,#4ac55e)',swatchBorder:'#4ac55e'},
+];
+
+const CARDS=[
+  {
+    id:'solar',name:'✨ Altın',
+    holoLayers:['linear-gradient(135deg,#e8b84b,#c8962a)'],
+    holoFilter:'brightness(1.1)',cardHue:'30deg',
+    frontBg:'linear-gradient(160deg,#160d00,#0e0800,#1c1000)',
+    frontBorder:'rgba(220,165,40,0.28)',
+    decoStroke1:'rgba(230,175,55,0.72)',decoStroke2:'rgba(200,145,35,0.16)',
+    decoText:'rgba(245,205,100,0.6)',decoQ:'rgba(210,155,40,0.14)',decoCorner:'rgba(225,175,55,0.4)',
+    thumbGrad:['#160d00','#0e0800','#e8b84b'],
+  },
+  {
+    id:'aurora',name:'🌌 Aurora',
+    holoLayers:['linear-gradient(135deg,#4dd8e0,#7c3aed)'],
+    holoFilter:'brightness(1.1)',cardHue:'185deg',
+    frontBg:'linear-gradient(160deg,#020c1a,#020915,#051020)',
+    frontBorder:'rgba(70,195,235,0.22)',
+    decoStroke1:'rgba(70,200,250,0.65)',decoStroke2:'rgba(70,185,240,0.13)',
+    decoText:'rgba(150,225,255,0.62)',decoQ:'rgba(70,195,240,0.1)',decoCorner:'rgba(70,200,250,0.32)',
+    thumbGrad:['#020c1a','#020915','#4dd8e0'],
+  },
+  {
+    id:'rose',name:'🌹 Gül',
+    holoLayers:['linear-gradient(135deg,#f472b6,#ec4899)'],
+    holoFilter:'brightness(1.1)',cardHue:'325deg',
+    frontBg:'linear-gradient(160deg,#180010,#0e0008,#1a0012)',
+    frontBorder:'rgba(240,75,155,0.24)',
+    decoStroke1:'rgba(245,80,162,0.68)',decoStroke2:'rgba(235,70,150,0.14)',
+    decoText:'rgba(255,155,210,0.62)',decoQ:'rgba(235,70,150,0.1)',decoCorner:'rgba(245,80,160,0.34)',
+    thumbGrad:['#180010','#0e0008','#f472b6'],
+  },
+  {
+    id:'galaxy',name:'🔮 Galaksi',
+    holoLayers:['linear-gradient(135deg,#a78bfa,#6d28d9)'],
+    holoFilter:'brightness(1.1)',cardHue:'268deg',
+    frontBg:'linear-gradient(160deg,#0a0118,#060012,#0d001c)',
+    frontBorder:'rgba(167,135,250,0.22)',
+    decoStroke1:'rgba(175,145,255,0.68)',decoStroke2:'rgba(160,130,250,0.14)',
+    decoText:'rgba(210,190,255,0.62)',decoQ:'rgba(165,135,250,0.1)',decoCorner:'rgba(175,145,255,0.34)',
+    thumbGrad:['#0a0118','#060012','#a78bfa'],
+  },
+  {
+    id:'emerald',name:'💎 Zümrüt',
+    holoLayers:['linear-gradient(135deg,#34d399,#059669)'],
+    holoFilter:'brightness(1.1)',cardHue:'152deg',
+    frontBg:'linear-gradient(160deg,#001410,#000e08,#001c14)',
+    frontBorder:'rgba(52,210,155,0.22)',
+    decoStroke1:'rgba(52,215,160,0.68)',decoStroke2:'rgba(48,200,145,0.13)',
+    decoText:'rgba(130,255,185,0.62)',decoQ:'rgba(52,210,155,0.1)',decoCorner:'rgba(52,215,160,0.34)',
+    thumbGrad:['#001410','#000e08','#34d399'],
+  },
+  {
+    id:'lava',name:'🌋 Lav',
+    holoLayers:['linear-gradient(135deg,#fb923c,#dc2626)'],
+    holoFilter:'brightness(1.1)',cardHue:'18deg',
+    frontBg:'linear-gradient(160deg,#1a0400,#100200,#1c0600)',
+    frontBorder:'rgba(250,100,35,0.24)',
+    decoStroke1:'rgba(255,105,40,0.72)',decoStroke2:'rgba(245,90,28,0.15)',
+    decoText:'rgba(255,188,128,0.66)',decoQ:'rgba(248,95,32,0.1)',decoCorner:'rgba(255,108,42,0.36)',
+    thumbGrad:['#1a0400','#100200','#fb923c'],
+  },
+  {
+    id:'ice',name:'❄️ Buz',
+    holoLayers:['linear-gradient(135deg,#93c5fd,#dbeafe)'],
+    holoFilter:'brightness(1.05)',cardHue:'212deg',
+    frontBg:'linear-gradient(160deg,#00081c,#000412,#000a24)',
+    frontBorder:'rgba(130,192,255,0.22)',
+    decoStroke1:'rgba(145,198,255,0.68)',decoStroke2:'rgba(125,182,255,0.13)',
+    decoText:'rgba(178,218,255,0.62)',decoQ:'rgba(125,185,255,0.1)',decoCorner:'rgba(145,198,255,0.34)',
+    thumbGrad:['#00081c','#000412','#93c5fd'],
+  },
+];
+
+const CW=168,CH=240;
+function ring(c,x,y,r,lw){c.lineWidth=lw||1.5;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.stroke();}
+function disc(c,x,y,r){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill();}
+function ln(c,x1,y1,x2,y2,lw){c.lineWidth=lw||1;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+
+// ================================================================
+// KART DESEN KUTUPHANESI v20
+// Tum kart yüzeyini kaplayan desenler, edge-to-edge
+// Antik cag + hologram karisimi, kalin cizgiler
+// ================================================================
+
+// 1. ALTIN — Ra Gözü merkez + tüm karta yayılan günes çarkı
+function mask_solar(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Dis çerçeve içinde büyük daire
+  c.globalAlpha=0.75; c.lineWidth=3;
+  ring(c,cx,cy,Math.min(cx,cy)-6,3);
+
+  // 16 ışın — kartın kenarına kadar uzanıyor
+  for(let i=0;i<16;i++){
+    const a=i*Math.PI/8;
+    const cos=Math.cos(a), sin=Math.sin(a);
+    // Kenarla kesişim noktası
+    const tx = cos===0 ? cx : cx + (cos>0 ? Math.min((CW-cx-6)/Math.abs(cos),(CH-cy-6)/Math.abs(sin)) : Math.min((cx-6)/Math.abs(cos),(cy-6)/Math.abs(sin)))*cos;
+    const ty = sin===0 ? cy : cy + (sin>0 ? Math.min((CH-cy-6)/Math.abs(sin),(CW-cx-6)/Math.abs(cos)) : Math.min((cy-6)/Math.abs(sin),(cx-6)/Math.abs(cos)))*sin;
+    const thick = i%2===0;
+    c.globalAlpha = thick?0.72:0.38;
+    c.lineWidth = thick?4:2;
+    ln(c,cx+18*cos,cy+18*sin, Math.min(CW-4,Math.max(4,tx)),Math.min(CH-4,Math.max(4,ty)), thick?4:2);
+  }
+
+  // Ra Gözü
+  c.globalAlpha=0.95; c.lineWidth=4;
+  c.beginPath();
+  c.moveTo(cx-40,cy); c.quadraticCurveTo(cx,cy-22,cx+40,cy);
+  c.quadraticCurveTo(cx,cy+22,cx-40,cy); c.stroke();
+  disc(c,cx,cy,10);
+  c.globalAlpha=0.55; ring(c,cx,cy,18,2.5); ring(c,cx,cy,28,1.5);
+  // Göz alt detayı
+  c.globalAlpha=0.6; c.lineWidth=2.5;
+  ln(c,cx+14,cy+11,cx+34,cy+30,2.5);
+  ln(c,cx-14,cy+11,cx-24,cy+26,2.5);
+
+  // Kose dekorasyon
+  for(const[x,y] of[[10,14],[CW-10,14],[10,CH-14],[CW-10,CH-14]]){
+    c.globalAlpha=0.65; c.lineWidth=2.5;
+    ring(c,x,y,10,2.5); disc(c,x,y,3.5);
+  }
+  // Yatay/dikey yardımcı çizgiler (mısır hiyeroglif hissi)
+  c.globalAlpha=0.22; c.lineWidth=1;
+  for(const y of[CH*0.22,CH*0.78]){
+    ln(c,8,y,CW-8,y,1);
+  }
+  for(const x of[CW*0.2,CW*0.8]){
+    ln(c,x,8,x,CH-8,1);
+  }
+}
+
+// 2. AURORA — Viking Vegvisir, tüm kart çapına dağılmış runik grid
+function mask_aurora(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Arka zemin: çapraz ince çizgiler (nordic weave hissi)
+  c.globalAlpha=0.18; c.lineWidth=1;
+  for(let d=-CH;d<CW+CH;d+=20){
+    c.beginPath(); c.moveTo(d,0); c.lineTo(d+CH,CH); c.stroke();
+    c.beginPath(); c.moveTo(d,0); c.lineTo(d-CH,CH); c.stroke();
+  }
+
+  // Büyük dis daire
+  c.globalAlpha=0.8; ring(c,cx,cy,Math.min(cx,cy)-8,4);
+
+  // 8 vegvisir kolu — merkezden daire kenarına
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4-Math.PI/2;
+    const len=Math.min(cx,cy)-10;
+    c.globalAlpha=0.85; c.lineWidth=4.5;
+    ln(c,cx,cy, cx+len*Math.cos(a),cy+len*Math.sin(a),4.5);
+    // Dal
+    const m1x=cx+len*0.5*Math.cos(a), m1y=cy+len*0.5*Math.sin(a);
+    const pa=a+Math.PI/2;
+    c.globalAlpha=0.6; c.lineWidth=2.5;
+    ln(c,m1x,m1y,m1x+Math.cos(pa)*14,m1y+Math.sin(pa)*14,2.5);
+    ln(c,m1x,m1y,m1x-Math.cos(pa)*14,m1y-Math.sin(pa)*14,2.5);
+    const m2x=cx+len*0.75*Math.cos(a), m2y=cy+len*0.75*Math.sin(a);
+    c.globalAlpha=0.4; ln(c,m2x,m2y,m2x+Math.cos(pa)*9,m2y+Math.sin(pa)*9,2);
+  }
+
+  c.globalAlpha=1; disc(c,cx,cy,11);
+  c.globalAlpha=0.6; ring(c,cx,cy,22,3); ring(c,cx,cy,34,1.5);
+
+  // Kose rune çerçeve
+  for(const[x,y] of[[14,18],[CW-14,18],[14,CH-18],[CW-14,CH-18]]){
+    c.globalAlpha=0.65; ring(c,x,y,10,2.5); disc(c,x,y,3.5);
+    for(let k=0;k<4;k++){const a=k*Math.PI/2; c.globalAlpha=0.4; c.lineWidth=1.5; ln(c,x,y,x+Math.cos(a)*8,y+Math.sin(a)*8,1.5);}
+  }
+}
+
+// 3. GÜL — Tam karta Osmanli arabesk: sekizgen + tekrarlayan petal
+function mask_rose(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Zemin: diagonal arabesque çizgiler
+  c.globalAlpha=0.16; c.lineWidth=1;
+  for(let d=-CH;d<CW+CH;d+=18){
+    c.beginPath(); c.moveTo(d,0); c.lineTo(d+CH,CH); c.stroke();
+  }
+
+  // Büyük sekizgen
+  c.globalAlpha=0.82; c.lineWidth=4;
+  c.beginPath();
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4+Math.PI/8;
+    const r=Math.min(cx,cy)-8;
+    i?c.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):c.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+  }
+  c.closePath(); c.stroke();
+
+  // İç sekizgen (küçük)
+  c.globalAlpha=0.38; c.lineWidth=1.5;
+  c.beginPath();
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4+Math.PI/8;
+    const r=Math.min(cx,cy)*0.55;
+    i?c.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):c.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+  }
+  c.closePath(); c.stroke();
+
+  // 8 büyük petal
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4;
+    c.globalAlpha=0.78; c.lineWidth=3.5;
+    c.save(); c.translate(cx+38*Math.cos(a),cy+38*Math.sin(a)); c.rotate(a);
+    c.beginPath(); c.ellipse(0,0,11,26,0,0,Math.PI*2); c.stroke();
+    c.restore();
+    disc(c,cx+64*Math.cos(a),cy+64*Math.sin(a),5);
+  }
+  // 4 küçük ara petal
+  for(let i=0;i<4;i++){
+    const a=i*Math.PI/2+Math.PI/8;
+    c.globalAlpha=0.4; c.lineWidth=2;
+    c.save(); c.translate(cx+52*Math.cos(a),cy+52*Math.sin(a)); c.rotate(a);
+    c.beginPath(); c.ellipse(0,0,7,16,0,0,Math.PI*2); c.stroke();
+    c.restore();
+  }
+  c.globalAlpha=1; disc(c,cx,cy,10); ring(c,cx,cy,20,3.5);
+}
+
+// 4. GALAKSI — Maya takvim çarkı full + piramit kenarlara kadar
+function mask_galaxy(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Zemin: ince yatay maya çizgileri
+  c.globalAlpha=0.15; c.lineWidth=0.8;
+  for(let y=16;y<CH-14;y+=10){ ln(c,10,y,CW-10,y,0.8); }
+
+  // Dis büyük daire + 20 bölme
+  const R=Math.min(cx,cy)-7;
+  c.globalAlpha=0.85; ring(c,cx,cy,R,4.5);
+  c.globalAlpha=0.5; ring(c,cx,cy,R-10,1.5);
+  for(let i=0;i<20;i++){
+    const a=i*Math.PI/10;
+    c.globalAlpha = i%5===0 ? 0.9:0.5;
+    c.lineWidth   = i%5===0 ? 4:2;
+    ln(c,cx+(R-10)*Math.cos(a),cy+(R-10)*Math.sin(a), cx+R*Math.cos(a),cy+R*Math.sin(a), i%5===0?4:2);
+  }
+
+  // 4 köşe piramit
+  for(const[x,y,ox,oy] of[[cx,16,16,10],[cx,CH-16,-16,10],[12,cy,10,18],[CW-12,cy,-10,18]]){
+    c.globalAlpha=0.8; c.lineWidth=4;
+    c.beginPath(); c.moveTo(x,y-oy); c.lineTo(x+ox,y+oy); c.lineTo(x-ox,y+oy); c.closePath(); c.stroke();
+    c.globalAlpha=0.45; c.lineWidth=2;
+    c.beginPath(); c.moveTo(x,y-oy*0.4); c.lineTo(x+ox*0.55,y+oy*0.6); c.lineTo(x-ox*0.55,y+oy*0.6); c.closePath(); c.stroke();
+  }
+
+  // İç iç dönen kareler
+  c.globalAlpha=0.72; c.lineWidth=3;
+  for(const r of[52,40,28]){
+    c.save(); c.translate(cx,cy); c.rotate(Math.PI/4);
+    c.beginPath(); c.rect(-r,-r,r*2,r*2); c.stroke();
+    c.restore();
+  }
+  c.globalAlpha=1; disc(c,cx,cy,10); c.globalAlpha=0.5; ring(c,cx,cy,18,2);
+}
+
+// 5. ZÜMRÜT — Kelt triskelion + ogham çubuklar tüm yan kenarlarda
+function mask_emerald(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Zemin: ince kelt örgü yatay çizgiler
+  c.globalAlpha=0.14; c.lineWidth=0.8;
+  for(let y=12;y<CH-10;y+=12){ ln(c,8,y,CW-8,y,0.8); }
+
+  // Büyük dış halka
+  c.globalAlpha=0.82; ring(c,cx,cy,Math.min(cx,cy)-8,4.5);
+  c.globalAlpha=0.38; ring(c,cx,cy,Math.min(cx,cy)-16,1.5);
+
+  // Triskelion — 3 büyük sarmal
+  for(let arm=0;arm<3;arm++){
+    const ba=arm*Math.PI*2/3-Math.PI/2;
+    c.globalAlpha=0.88; c.lineWidth=5;
+    c.save(); c.translate(cx,cy); c.rotate(ba);
+    c.beginPath(); c.moveTo(0,0);
+    for(let t=0.1;t<Math.PI*1.6;t+=0.05){
+      const r=t*(44/Math.PI/1.6);
+      c.lineTo(r*Math.cos(t),r*Math.sin(t));
+    }
+    c.stroke();
+    const er=44,ea=Math.PI*1.6;
+    c.lineWidth=2.5; ring(c,er*Math.cos(ea),er*Math.sin(ea),9,2.5);
+    disc(c,er*Math.cos(ea),er*Math.sin(ea),5.5);
+    c.restore();
+  }
+  c.globalAlpha=1; disc(c,cx,cy,12); c.globalAlpha=0.5; ring(c,cx,cy,22,3);
+
+  // Tüm 4 kenarda ogham çubukları
+  for(const[sx,dir,vert] of[[8,1,false],[CW-8,-1,false],[8,1,true],[CW-8,-1,true]]){
+    const isLeft = sx<CW/2;
+    if((vert && !isLeft) || (!vert && isLeft)){
+      // Sol dikey ogham
+      c.globalAlpha=0.68; c.lineWidth=3.5;
+      ln(c,sx,20,sx,CH-20,3.5);
+      for(let y=35;y<CH-20;y+=15){
+        c.globalAlpha=0.55; c.lineWidth=2.5;
+        ln(c,sx,y,sx+dir*12,y,2.5);
+      }
+    } else {
+      // Sağ dikey ogham
+      c.globalAlpha=0.68; c.lineWidth=3.5;
+      ln(c,sx,20,sx,CH-20,3.5);
+      for(let y=35;y<CH-20;y+=15){
+        c.globalAlpha=0.55; c.lineWidth=2.5;
+        ln(c,sx,y,sx+dir*12,y,2.5);
+      }
+    }
+  }
+  // Kose Celtic knot
+  for(const[x,y] of[[18,22],[CW-18,22],[18,CH-22],[CW-18,CH-22]]){
+    c.globalAlpha=0.6; ring(c,x,y,10,2.5); disc(c,x,y,4);
+    for(let k=0;k<4;k++){const a=k*Math.PI/2; c.globalAlpha=0.35; c.lineWidth=1.5; ln(c,x,y,x+Math.cos(a)*9,y+Math.sin(a)*9,1.5);}
+  }
+}
+
+// 6. LAV — Kaos yıldızı tüm karta + cuneiform zemin doku
+function mask_lava(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Zemin: ince kılavuz çizgiler (Mesopotamya tablet)
+  c.globalAlpha=0.15; c.lineWidth=0.8;
+  for(let y=18;y<CH-14;y+=9){ ln(c,8,y,CW-8,y,0.8); }
+
+  // Büyük kaos yıldızı kolları — kenarlara uzanıyor
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4;
+    const cos=Math.cos(a), sin=Math.sin(a);
+    // Kenar mesafesi
+    const d = Math.min(
+      cos!==0 ? (cos>0?CW-cx-6:cx-6)/Math.abs(cos) : 9999,
+      sin!==0 ? (sin>0?CH-cy-6:cy-6)/Math.abs(sin)  : 9999
+    );
+    const thick=i%2===0;
+    c.globalAlpha=thick?0.88:0.45; c.lineWidth=thick?6:3;
+    ln(c,cx+16*cos,cy+16*sin, cx+(d-2)*cos,cy+(d-2)*sin, thick?6:3);
+    // Ok ucu
+    if(thick){
+      const ex=cx+(d-6)*cos, ey=cy+(d-6)*sin;
+      c.globalAlpha=0.75; c.lineWidth=3;
+      ln(c,ex,ey,ex+Math.cos(a+0.5)*14,ey+Math.sin(a+0.5)*14,3);
+      ln(c,ex,ey,ex+Math.cos(a-0.5)*14,ey+Math.sin(a-0.5)*14,3);
+    }
+  }
+
+  // Merkez ateş halkası
+  c.globalAlpha=1; disc(c,cx,cy,14); c.globalAlpha=0.78;
+  ring(c,cx,cy,26,5); ring(c,cx,cy,36,2.5); ring(c,cx,cy,46,1.5);
+
+  // Cuneiform bloklari kenarlarda
+  for(const[bx,by] of[[12,30],[CW-26,30],[12,CH-70],[CW-26,CH-70]]){
+    c.globalAlpha=0.62; c.lineWidth=3;
+    for(let r=0;r<3;r++){
+      const ry=by+r*16;
+      ln(c,bx,ry,bx+14,ry,3); disc(c,bx+14,ry,3);
+      c.globalAlpha=0.35; c.lineWidth=1.8; ln(c,bx+6,ry,bx+6,ry-8,1.8);
+      c.globalAlpha=0.62;
+    }
+  }
+  // Sur kıvrımları üst/alt
+  c.globalAlpha=0.45; c.lineWidth=2;
+  for(let x=12;x<CW-10;x+=18){
+    c.beginPath(); c.rect(x,8,12,11); c.stroke();
+    c.beginPath(); c.rect(x,CH-19,12,11); c.stroke();
+  }
+}
+
+// 7. BUZ — Gotik kemer tüm kartta + simya zemininde çapraz
+function mask_ice(c){
+  c.clearRect(0,0,CW,CH); c.fillStyle='#fff'; c.strokeStyle='#fff';
+  const cx=CW/2, cy=CH/2;
+
+  // Zemin: çapraz ince kılavuz (gotik taş zemin)
+  c.globalAlpha=0.15; c.lineWidth=0.8;
+  for(let d=-CH;d<CW+CH;d+=16){
+    c.beginPath(); c.moveTo(d,0); c.lineTo(d+CH,CH); c.stroke();
+  }
+
+  // Büyük gotik kemer — kenardan kenara
+  c.globalAlpha=0.88; c.lineWidth=4.5;
+  c.beginPath();
+  c.moveTo(8,CH-10); c.lineTo(8,cy+10);
+  c.quadraticCurveTo(8,cy-35, cx,cy-70);
+  c.quadraticCurveTo(CW-8,cy-35, CW-8,cy+10);
+  c.lineTo(CW-8,CH-10); c.stroke();
+  // Orta dikey
+  c.lineWidth=3.5; ln(c,cx,cy-69,cx,CH-10,3.5);
+  // Yatay kiris
+  c.lineWidth=3.5; ln(c,8,cy+30,CW-8,cy+30,3.5);
+  ln(c,8,cy-15,CW-8,cy-15,2);
+
+  // Üst trebfoil gül penceresi
+  c.lineWidth=3.5; ring(c,cx,cy-44,19,3.5);
+  for(let i=0;i<3;i++){
+    const a=i*Math.PI*2/3-Math.PI/2;
+    ring(c,cx+11*Math.cos(a),cy-44+11*Math.sin(a),9,2.5);
+  }
+  disc(c,cx,cy-44,6);
+
+  // Simya sembolleri (büyük, tüm alt bölümde)
+  c.globalAlpha=0.82; c.lineWidth=4;
+  // Ateş (sol üst)
+  c.beginPath(); c.moveTo(cx-44,cy+5); c.lineTo(cx-26,cy-22); c.lineTo(cx-8,cy+5); c.closePath(); c.stroke();
+  c.lineWidth=2.5; ln(c,cx-42,cy-4,cx-10,cy-4,2.5);
+  // Su (sağ üst)
+  c.lineWidth=4;
+  c.beginPath(); c.moveTo(cx+8,cy-22); c.lineTo(cx+26,cy+5); c.lineTo(cx+44,cy-22); c.closePath(); c.stroke();
+  c.lineWidth=2.5; ln(c,cx+10,cy-4,cx+42,cy-4,2.5);
+  // Hava (sol alt)
+  c.lineWidth=3.5;
+  c.beginPath(); c.moveTo(cx-44,cy+45); c.lineTo(cx-26,cy+18); c.lineTo(cx-8,cy+45); c.closePath(); c.stroke();
+  // Toprak (sağ alt)
+  c.beginPath(); c.moveTo(cx+8,cy+18); c.lineTo(cx+26,cy+45); c.lineTo(cx+44,cy+18); c.closePath(); c.stroke();
+  c.lineWidth=2.5; ln(c,cx+10,cy+36,cx+42,cy+36,2.5);
+
+  // Alt merkez daire
+  c.globalAlpha=0.72; ring(c,cx,cy+68,18,3.5); disc(c,cx,cy+68,6);
+  for(let i=0;i<6;i++){const a=i*Math.PI/3; disc(c,cx+18*Math.cos(a),cy+68+18*Math.sin(a),3.5);}
+
+  // Kose gotik sivri uçlar
+  for(const[x,y] of[[12,18],[CW-12,18],[12,CH-18],[CW-12,CH-18]]){
+    c.globalAlpha=0.55; ring(c,x,y,9,2.5); disc(c,x,y,3.5);
+  }
+}
+
+const MASK_FN={solar:mask_solar,aurora:mask_aurora,rose:mask_rose,galaxy:mask_galaxy,emerald:mask_emerald,lava:mask_lava,ice:mask_ice};
+
+
+
+
+
+function drawDecoLayer(ctx,card){
+  const m=5, cr=14;
+  // Eskitilmis dis cerceve — yuvarlak kose, kalin ama soluk
+  ctx.save(); ctx.strokeStyle=card.decoStroke1; ctx.lineWidth=3.5;
+  ctx.globalAlpha=0.7; ctx.lineJoin='round'; ctx.setLineDash([]);
+  ctx.beginPath();
+  ctx.moveTo(m+cr,m); ctx.lineTo(CW-m-cr,m); ctx.arcTo(CW-m,m,CW-m,m+cr,cr);
+  ctx.lineTo(CW-m,CH-m-cr); ctx.arcTo(CW-m,CH-m,CW-m-cr,CH-m,cr);
+  ctx.lineTo(m+cr,CH-m); ctx.arcTo(m,CH-m,m,CH-m-cr,cr);
+  ctx.lineTo(m,m+cr); ctx.arcTo(m,m,m+cr,m,cr);
+  ctx.closePath(); ctx.stroke();
+  // Ikinci soluk ic cerceve
+  ctx.globalAlpha=0.28; ctx.lineWidth=1.5;
+  const m2=m+7;
+  ctx.beginPath();
+  ctx.moveTo(m2+cr,m2); ctx.lineTo(CW-m2-cr,m2); ctx.arcTo(CW-m2,m2,CW-m2,m2+cr,cr);
+  ctx.lineTo(CW-m2,CH-m2-cr); ctx.arcTo(CW-m2,CH-m2,CW-m2-cr,CH-m2,cr);
+  ctx.lineTo(m2+cr,CH-m2); ctx.arcTo(m2,CH-m2,m2,CH-m2-cr,cr);
+  ctx.lineTo(m2,m2+cr); ctx.arcTo(m2,m2,m2+cr,m2,cr);
+  ctx.closePath(); ctx.stroke();
+  ctx.restore();
+
+  // Eskitme lekesi — kose kararmalar (yorgun kart hissi)
+  const corners=[
+    [0,0,m+30,m+30],
+    [CW-m-30,0,m+30,m+30],
+    [0,CH-m-30,m+30,m+30],
+    [CW-m-30,CH-m-30,m+30,m+30],
+  ];
+  corners.forEach(([x,y,w,h])=>{
+    ctx.save();
+    const rg=ctx.createRadialGradient(x+(w<0?w:0),y+(h<0?h:0),0, x+(w<0?w:0),y+(h<0?h:0),40);
+    rg.addColorStop(0,'rgba(0,0,0,0.35)');
+    rg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=rg; ctx.globalAlpha=0.5;
+    ctx.fillRect(x,y,Math.abs(w),Math.abs(h)); ctx.restore();
+  });
+
+  // Eskitme: kose kararmalar
+  const cornerPts=[[0,0],[CW-40,0],[0,CH-40],[CW-40,CH-40]];
+  cornerPts.forEach(([x,y])=>{
+    ctx.save();
+    const rg=ctx.createRadialGradient(x<CW/2?x+5:x+35,y<CH/2?y+5:y+35,0, x<CW/2?x+5:x+35,y<CH/2?y+5:y+35,45);
+    rg.addColorStop(0,'rgba(0,0,0,0.32)'); rg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=rg; ctx.globalAlpha=0.5;
+    ctx.fillRect(x,y,40,40); ctx.restore();
+  });
+}
+function drawDeco(ctx,card){ctx.clearRect(0,0,CW,CH);drawDecoLayer(ctx,card);}
+
+function drawThumb(ctx,card){
+  ctx.clearRect(0,0,38,54);
+  const g=ctx.createLinearGradient(0,0,38,54);
+  g.addColorStop(0,card.thumbGrad[0]);g.addColorStop(1,card.thumbGrad[1]);
+  ctx.fillStyle=g;ctx.fillRect(0,0,38,54);
+  ctx.fillStyle=card.thumbGrad[2];ctx.fillRect(0,0,38,4);
+  ctx.strokeStyle=card.decoStroke1;ctx.lineWidth=.9;ctx.strokeRect(3,6,32,44);
+  ctx.font='bold 20px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle=card.decoQ||'rgba(255,255,255,0.1)';ctx.fillText('?',19,30);
+}
+
+const Qs={
+  mixed:[
+    {q:"Bugüne kadar yaptığın en büyük pişmanlık nedir?",e:"😔"},
+    {q:"Grupta en çok kıskandığın kişi kim ve neden?",e:"👀"},
+    {q:"Kimseye söylemediğin en büyük sırrın nedir?",e:"🤫"},
+    {q:"En son ne zaman yalan söyledin, konusu neydi?",e:"🤥"},
+    {q:"Görünmez olsan ilk ne yapardın?",e:"👻"},
+    {q:"En çok utandığın an hangisiydi?",e:"😳"},
+    {q:"Son sevgilinin hakkındaki en büyük şikayetin ne?",e:"💔"},
+    {q:"Grupta kiminle en zor anlaşıyorsun, neden?",e:"😤"},
+    {q:"Şimdiye kadar yaptığın en çılgın şey neydi?",e:"🤪"},
+    {q:"Buradaki biriyle takas yapmak zorunda kalsan kim olurdu?",e:"🔄"},
+    {q:"En son ne zaman ağladın, neden?",e:"😢"},
+    {q:"Hayatında değiştirmek istediğin tek şey ne olurdu?",e:"✨"},
+    {q:"En büyük korkun nedir, gerçekten?",e:"😨"},
+    {q:"Birini incittiğin için hâlâ pişmansın, kimi?",e:"🙏"},
+    {q:"Buradaki en çekici kişi sence kim?",e:"🔥"},
+    {q:"En son kime 'seni seviyorum' dedin?",e:"💕"},
+    {q:"Birine aşık olup hiç söyleyemedin mi, kim?",e:"💘"},
+    {q:"En çok gizlediğin zayıflığın nedir?",e:"🛡️"},
+    {q:"Hayatında yaptığın en büyük hata neydi?",e:"💥"},
+    {q:"Pişman olduğun en önemli karar hangisiydi?",e:"⚖️"},
+    {q:"En son ne zaman kırıldın, kimden?",e:"🫀"},
+    {q:"Kimsenin bilmediği gizli bir yeteneğin var mı?",e:"🎭"},
+    {q:"Hayatında en çok kime imrendin?",e:"🌟"},
+    {q:"En büyük hayalin ne?",e:"🌈"},
+    {q:"Hiç ihanete uğradın mı, nasıl?",e:"🗡️"},
+    {q:"En çok neyden kaçıyorsun hayatında?",e:"🏃"},
+    {q:"En son ne zaman özür dilemek zorunda kaldın?",e:"🥺"},
+    {q:"İnsanlar senin hakkında ne yanlış düşünüyor?",e:"🤔"},
+    {q:"Hayatında en çok neye değer veriyorsun?",e:"💎"},
+    {q:"Şu an içinden ne geçiyor, gerçekten söyle.",e:"💭"},
+    {q:"Son bir yılın en mutlu anı hangisiydi?",e:"😄"},
+    {q:"Hiç birini manipüle etmeye çalıştın mı?",e:"😈"},
+    {q:"Arkadaşlarına gösteremediğin bir yanın var mı?",e:"🎭"},
+    {q:"Grup sohbetlerinde gerçekte ne düşünüyorsun?",e:"💬"},
+    {q:"Bir arkadaşının sırrını tutmak zorunda kaldın mı?",e:"🔐"},
+    {q:"En son ne zaman gerçekten çok güldün?",e:"😂"},
+    {q:"Seni en çok kim anlıyor bu grupta?",e:"🤝"},
+    {q:"Hayatından memnun musun, yoksa numara mı yapıyorsun?",e:"🪞"},
+    {q:"Buradakilerden birini gizli bir şey için ararsın, kimi?",e:"📞"},
+    {q:"İlk aşkını hiç unutabildin mi?",e:"💞"},
+    {q:"Grubundakilere hiç söylemediğin bir iltifat var mı?",e:"🌹"},
+    {q:"Bir şeyi başaracağına inanmadığın an ne hissettin?",e:"⚡"},
+    {q:"En çok hangi tür insanlardan rahatsız oluyorsun?",e:"😬"},
+    {q:"Hayatında seni en çok etkileyen kişi kim oldu?",e:"👑"},
+    {q:"Bir gece tüm teknoloji olmasa ne yapardın?",e:"🌙"},
+    {q:"Sana göre gerçek arkadaşlık ne anlama geliyor?",e:"🤜"},
+    {q:"Bugün içinde gizlediğin bir duygu var mı?",e:"🫁"},
+    {q:"Hiç birini test etmek için yalan söyledin mi?",e:"🧪"},
+    {q:"Hayatında en çok kimi özledin?",e:"🌊"},
+    {q:"Bu grupta kalıcı bir şeyi değiştirebilseydin ne olurdu?",e:"🦋"},
+  ],
+  male:[
+    {q:"Grupta en çok güvendiğin ama en çok kıskandığın kim?",e:"🤜"},
+    {q:"Bir arkadaşının sevgilisinden hiç hoşlandın mı?",e:"😏"},
+    {q:"En son ne zaman ağladın, kimse görmedi mi?",e:"😔"},
+    {q:"Arkadaşlarından hangisinin hayatını yaşamak isterdin?",e:"🔄"},
+    {q:"Birine karşı gizli his besledin mi, kim?",e:"💘"},
+    {q:"En çok hangi konuda yalan söylüyorsun?",e:"🤥"},
+    {q:"Grupta kiminle kavga ettiğinde en çok üzülüyorsun?",e:"💔"},
+    {q:"En son ne zaman kendini yalnız hissettin?",e:"🌙"},
+    {q:"Arkadaşların hakkında söylediğin en büyük yalan neydi?",e:"🎭"},
+    {q:"Bir arkadaşının sırrını başkasına söyledin mi?",e:"🤫"},
+    {q:"Hangi arkadaşın seni en az anlıyor?",e:"🤷"},
+    {q:"Bir gecelik ilişki mi yoksa duygusal bağ mı tercih edersin?",e:"🔥"},
+    {q:"Ne zaman korktun ama belli etmedin?",e:"😤"},
+    {q:"Grupta kimin fikirlerine en çok değer veriyorsun?",e:"🧠"},
+    {q:"Aşık olup hiç söyleyemedin mi, kim?",e:"💘"},
+    {q:"En çok utandığın fiziksel özelliğin ne?",e:"😳"},
+    {q:"Grupta kiminle en çok rekabet içindesin?",e:"⚔️"},
+    {q:"Bir arkadaşını hiç arkasından çekiştin mi?",e:"👀"},
+    {q:"'Erkek adam ağlamaz' derken için sızladığın an?",e:"🥺"},
+    {q:"Grupta en çok kimin seni kıskandığını düşünüyorsun?",e:"👁️"},
+    {q:"Bir arkadaşının başarısını içten içe kıskandın mı?",e:"🏆"},
+    {q:"En çok hangi konuda başarısız olduğunu düşünüyorsun?",e:"😓"},
+    {q:"Grupta kiminle yalnız kalmak istemezsin?",e:"🚫"},
+    {q:"Birine hiç önyargılı davrandın mı?",e:"⚖️"},
+    {q:"En son ne zaman kendini yetersiz hissettin?",e:"💭"},
+    {q:"Seni en iyi anlayan arkadaşın kim?",e:"🤝"},
+    {q:"En çok hangi alışkanlığından utanıyorsun?",e:"🙈"},
+    {q:"Grubundan kimin hayatına en çok imreniyorsun?",e:"🌟"},
+    {q:"Birine karşı kötü düşünceler besledin mi?",e:"😈"},
+    {q:"Bir arkadaşının başarısızlığına hiç sevindin mi?",e:"😬"},
+    {q:"En büyük 'erkeklik' kompleksin ne?",e:"🧠"},
+    {q:"Hayatında en çok pişman olduğun bir tercih hangisi?",e:"💥"},
+    {q:"Arkadaşlarınla son gezinin en kötü anı neydi?",e:"🏕️"},
+    {q:"Grupta en çok kimin dalganı geçtiğini düşünüyorsun?",e:"😂"},
+    {q:"Hayatında en çok zorlandığın dönem hangisiydi?",e:"⛰️"},
+    {q:"Para mı, sadakat mi, başarı mı, hangisi daha önce gelir?",e:"🎯"},
+    {q:"En son ne zaman gerçekten korktuğunu hissettin?",e:"😨"},
+    {q:"Birinin sana dürüstçe söylemediğini düşündüğün şey ne?",e:"🔍"},
+    {q:"Grubuna ihanet ettiğini hissettiğin bir an oldu mu?",e:"⚡"},
+    {q:"Aile baskısından en çok hangi konuda sıkılıyorsun?",e:"🏠"},
+    {q:"Grupta en çok kimin gelecekte başarılı olacağına inanıyorsun?",e:"🚀"},
+    {q:"Bir arkadaşına söylemek istediğin ama söyleyemediğin şey nedir?",e:"💬"},
+    {q:"Şu an hayatında neyi değiştirmek istiyorsun?",e:"🌱"},
+    {q:"En son ne zaman gerçek anlamda dinlendin?",e:"😴"},
+    {q:"Hayatında seni en çok kimin desteği ayakta tuttu?",e:"💪"},
+    {q:"Bir arkadaşının hatası için hiç omuz verdin mi?",e:"🤲"},
+    {q:"Grubunda en çok kimi 'kardeş' gibi görüyorsun?",e:"❤️"},
+    {q:"En son ne zaman 'bu benim için değil' dedin?",e:"🚶"},
+    {q:"Hayatında en çok hangi an kendine saygı duydun?",e:"🦁"},
+    {q:"Bir gün tamamen özgür olsan ilk ne yapardın?",e:"🕊️"},
+  ],
+  female:[
+    {q:"Grubunuzda en çok kıskandığın kız kim ve neden?",e:"💅"},
+    {q:"Bir arkadaşının erkek arkadaşından hiç hoşlandın mı?",e:"😏"},
+    {q:"Son ne zaman aynada kendine baktın ve ağladın?",e:"🪞"},
+    {q:"Arkadaşlarından hangisinin vücudunu kıskanıyorsun?",e:"💃"},
+    {q:"Birine karşı gizli his besledin mi, kim?",e:"💘"},
+    {q:"En çok hangi konuda yalan söylüyorsun?",e:"🤥"},
+    {q:"Kiminle kavga ettiğinde en çok üzülüyorsun?",e:"💔"},
+    {q:"En son ne zaman kendini yalnız hissettin?",e:"🌙"},
+    {q:"Arkadaşların hakkında söylediğin en büyük dedikodu neydi?",e:"💬"},
+    {q:"Bir arkadaşının sırrını başkasına söyledin mi?",e:"🤫"},
+    {q:"Hangi arkadaşın seni en az anlıyor?",e:"🤷‍♀️"},
+    {q:"Aşk mı, para mı, dürüst cevap ver.",e:"💸❤️"},
+    {q:"Ne zaman korktun ama belli etmedin?",e:"😤"},
+    {q:"Grubunda kimin fikirlerine en çok değer veriyorsun?",e:"👑"},
+    {q:"Aşık olup hiç söyleyemedin mi, kim?",e:"💕"},
+    {q:"En çok utandığın fiziksel özelliğin ne?",e:"😳"},
+    {q:"Grupta kiminle en çok rekabet içindesin?",e:"⚔️"},
+    {q:"Bir arkadaşını hiç arkasından çekiştin mi?",e:"👀"},
+    {q:"'Keşke başka biri olsaydım' dediğin an hangisiydi?",e:"🌈"},
+    {q:"Grupta en çok kimin seni kıskandığını düşünüyorsun?",e:"👁️"},
+    {q:"Bir arkadaşının başarısını içten içe kıskandın mı?",e:"🏆"},
+    {q:"En çok hangi konuda başarısız olduğunu düşünüyorsun?",e:"😓"},
+    {q:"Grupta kiminle yalnız kalmak istemezsin?",e:"🚫"},
+    {q:"Birine hiç önyargılı davrandın mı?",e:"⚖️"},
+    {q:"En son ne zaman kendini yetersiz hissettin?",e:"💭"},
+    {q:"Seni en iyi anlayan arkadaşın kim?",e:"🤗"},
+    {q:"Bir arkadaşının ilişkisini hiç eleştirdin mi?",e:"💬"},
+    {q:"En çok hangi alışkanlığından utanıyorsun?",e:"🙈"},
+    {q:"Grubundan kimin hayatına en çok imreniyorsun?",e:"✨"},
+    {q:"Birine karşı kötü düşünceler besledin mi?",e:"😈"},
+    {q:"Bir arkadaşının giyim tarzını hiç eleştirdin mi?",e:"👗"},
+    {q:"Grubundaki bir arkadaşının ilişkisine kıskançlık hissettin mi?",e:"💞"},
+    {q:"Seni en çok etkileyen kız arkadaşın kim oldu?",e:"🦋"},
+    {q:"Sosyal medyada gösterdiğin hayatla gerçek hayatın ne kadar farklı?",e:"📱"},
+    {q:"Son romantik hayal kurduğun kişi kim?",e:"💭"},
+    {q:"Kendini beğendirmek için yaptığın en saçma şey neydi?",e:"😅"},
+    {q:"Grup içinde gerçekten en çok kimi seviyorsun?",e:"❤️"},
+    {q:"Bir 'kız kardeşlik andı' bozduğun oldu mu?",e:"🤞"},
+    {q:"Erkeklere karşı en çok ne konuda yargılayıcısın?",e:"⚖️"},
+    {q:"Son dönemde en çok kimi özledin?",e:"🌊"},
+    {q:"Arkadaşlarından birine 'dur, fazla' diyebileceğin var mı?",e:"✋"},
+    {q:"Hayatındaki en zehirli ilişkiyi bırakmak ne zaman oldu?",e:"🍂"},
+    {q:"Grubunda en çok kimin sorun yarattığını düşünüyorsun?",e:"🌪️"},
+    {q:"Bir arkadaşının sevgilisini hiç kendine düşündün mü?",e:"🙈"},
+    {q:"Şu an en çok neyin eksikliğini hissediyorsun?",e:"🪴"},
+    {q:"En son seni gerçekten dinleyen kim oldu?",e:"🫶"},
+    {q:"Kendin için en son ne zaman bir şey yaptın?",e:"🌸"},
+    {q:"Bir arkadaşının hatası için hiç omuz verdin mi?",e:"🤲"},
+    {q:"Hayatında seni en çok besleyen arkadaşlık hangisi?",e:"🌻"},
+    {q:"Şu an tamamen özgür olsan ilk ne yapardın?",e:"🕊️"},
+  ],
+  fun:[
+    {q:"Şu an buradakilerden birini öpecek olsan kim olurdu?",e:"😘"},
+    {q:"En tuhaf alışkanlığın nedir, itiraf et.",e:"🦄"},
+    {q:"Hiç sanal ortamda biriyle flört ettin mi?",e:"💻"},
+    {q:"Sosyal medyadaki rolünü bir kelimeyle özetlersen ne dersin?",e:"📱"},
+    {q:"Şimdiye kadar yaptığın en utandırıcı dans adımı neydi?",e:"💃"},
+    {q:"Bir hayvanla kafa kafaya gelseydin hangisi olurdu?",e:"🦁"},
+    {q:"Partide en çok hangi tip insandan kaçıyorsun?",e:"🏃"},
+    {q:"Zeki mi yoksa komik mi, hangisi daha çekici?",e:"🧠"},
+    {q:"Şimdiye kadar attığın en büyük numara neydi?",e:"🎭"},
+    {q:"Sabah aynaya bakınca söylediğin ilk şey ne?",e:"🪞"},
+    {q:"En son hangi diziyi izleyerek ağladın?",e:"📺"},
+    {q:"Gece yatmadan önce aklından en çok ne geçer?",e:"🌙"},
+    {q:"En çılgın dedikoduların neydi, itiraf et.",e:"💬"},
+    {q:"Bir süper güç seçseydin ne olurdu?",e:"⚡"},
+    {q:"Hiç yanlış kişiye mesaj attın mı, ne yazdı?",e:"😱"},
+    {q:"Birinin profiline saatler boyunca baktın mı?",e:"📱"},
+    {q:"En yanlış zamanda güldüğün an hangisi?",e:"😂"},
+    {q:"Hayatına film müziği koyacak olsan hangisini seçerdin?",e:"🎬"},
+    {q:"Romantik olmaya çalışırken en çok rezil olduğun an?",e:"🌹"},
+    {q:"En son çektiğin selfie'yi anlat.",e:"🤳"},
+    {q:"Hiç uyurgezer misin ya da garip bir şey oluyor mu uyurken?",e:"😴"},
+    {q:"En çok hangi emojiye benzeyen bir yüzün var?",e:"😜"},
+    {q:"Birinin sana en komik dediği şey neydi?",e:"😆"},
+    {q:"Grubunda en kötü şakacı kim?",e:"🃏"},
+    {q:"Stres attığında en saçma ne yapıyorsun?",e:"🤪"},
+    {q:"Şu an içinde en çok ne var; açlık mı, uyku mu, heyecan mı?",e:"🍕"},
+    {q:"Bir TV yarışmasına çıksan hangi yarışmayı seçerdin?",e:"🎤"},
+    {q:"Grubunda en çok kimi taklit edebilirsin?",e:"🎭"},
+    {q:"Telefonu yanlış yere bırakıp utandın mı hiç?",e:"📵"},
+    {q:"Birden fazla kişiyi aynı anda beğendiğinde ne hissediyorsun?",e:"😵"},
+    {q:"Seninle bir filmde rol alacak olsaydı hangi oyuncu uygun olurdu?",e:"🎬"},
+    {q:"İlk randevuda en çok ne söylememeye çalışıyorsun?",e:"🤐"},
+    {q:"Grubunda en çok kiminle 'ikiz ruh' gibi hissediyorsun?",e:"👯"},
+    {q:"Son uyku seansında ne rüya gördün?",e:"💤"},
+    {q:"Hayatının en garip rastlantısı neydi?",e:"🌀"},
+    {q:"Birinin fotoğrafını gizlice kaç kez izledin?",e:"👁️"},
+    {q:"Bir karakter olsaydın hangi dizi karakteri olurdun?",e:"📺"},
+    {q:"Sevgili olmasaydın ilk arardığın kişi kim?",e:"📞"},
+    {q:"Grubunda en çok kimin 'gerçek yüzünü' bildiğini düşünüyorsun?",e:"🎭"},
+    {q:"Kendi hayatını anlatan bir şarkı seçseydin hangisi olurdu?",e:"🎵"},
+    {q:"Neden güldüğünü bilemediğin bir gülme krizin oldu mu?",e:"🤣"},
+    {q:"En son ne zaman gerçekten utancından yerin dibine girdin?",e:"🫣"},
+    {q:"Hayatının en garip koinsidensi neydi?",e:"🎲"},
+    {q:"Grubunda en çok kim seni gülmelere boğuyor?",e:"😂"},
+    {q:"Bir süre telefonun olmasa ilk ne eksikliğini hissederdin?",e:"📵"},
+    {q:"Şu an yanındaki kişiye hiç söylemediğin bir kompliman ne?",e:"✨"},
+    {q:"Bugün sosyal medyaya bakmasaydın ne değişirdi?",e:"🌿"},
+    {q:"Grubun için en çok kime 'sen berbat bir reklamsın' derdin?",e:"📣"},
+    {q:"Gerçek anlamda 'bu saçmaydı' dediğin en yakın anın?",e:"🤦"},
+    {q:"Bir gece seni en çok güldüren şey neydi?",e:"🌙"},
+  ],
+  adult:[
+    {q:"Şimdiye kadar yaşadığın en utandırıcı romantik an neydi?",e:"😳"},
+    {q:"Bir ilişkide en çok ne seni heyecanlandırır?",e:"🔥"},
+    {q:"Hiç olmamasını istediğin bir gece oldu mu?",e:"🌙"},
+    {q:"Partnerine hiç söylemediğin bir fantezin var mı?",e:"💭"},
+    {q:"Geçmişte bırakmakta en çok zorlandığın kişi kim?",e:"⛓️"},
+    {q:"Birinin sana karşı olduğunu ne zaman anladın?",e:"🎯"},
+    {q:"En çok hangi ilişki tarzında mutlu oldun?",e:"💞"},
+    {q:"Bir ilişkide en çok neyi kaçırıyor seni?",e:"🏃"},
+    {q:"Geceyi birisiyle geçirdiğinde sabah ne hissedersin?",e:"🌅"},
+    {q:"Partnerine söylediğin en büyük yalan neydi?",e:"🤥"},
+    {q:"Hiç yanlış kişiyle romantik olduğun oldu mu?",e:"😬"},
+    {q:"Bir ilişkide en çok neye ihtiyaç duyuyorsun?",e:"🫶"},
+    {q:"Geçmişte en çok pişman olduğun romantik karar hangisi?",e:"💔"},
+    {q:"Flört ederken en çok hangi sinyali veriyorsun?",e:"😏"},
+    {q:"Hiç biri sana 'sen farklısın' dedi mi, gerçek miydi?",e:"✨"},
+    {q:"En çok hangi özellikteki insana çekiliyorsun?",e:"💘"},
+    {q:"İlişkinde kırmızı çizgin nedir?",e:"🚫"},
+    {q:"Şimdiye kadar en çok kalbinin kırıldığı an hangisi?",e:"💔"},
+    {q:"Duygusal mı yoksa fiziksel yakınlık mı önce gelir?",e:"🤔"},
+    {q:"Tanışmadan önce biriyle ne kadar mesajlaşabilirsin?",e:"💬"},
+    {q:"Bir ilişkide aldatılan mı yoksa aldatan mı daha kötü?",e:"⚖️"},
+    {q:"Hiç ilişki sırasında başka birine ilgi duydun mu?",e:"👀"},
+    {q:"Bir ilişkide en çok ne seni yoruyor?",e:"😮‍💨"},
+    {q:"Sevgilinin geçmişiyle ilgili merak ettiğin ama sormadığın şey?",e:"🔍"},
+    {q:"Gerçekten sevmeden birini sevmiş gibi davrandın mı?",e:"🎭"},
+    {q:"En çok hangi tür romantik jeste tepki veriyorsun?",e:"💐"},
+    {q:"Öpüşme mi, sarılma mı, hangisi daha duygusal?",e:"🫂"},
+    {q:"Sevgilini kıskandırmak için hiç bir şey yaptın mı?",e:"😤"},
+    {q:"Hayatında en çok seni iten kişi kim oldu?",e:"⬅️"},
+    {q:"İlk görüşmede en çok neye bakıyorsun?",e:"👁️"},
+    {q:"Seni en çok etkileyen romantik an neydi?",e:"🌹"},
+    {q:"Geçmişte kalan birini aramak ister miydin?",e:"📞"},
+    {q:"Bir ilişkide en çok hangi konuşmayı yapmaktan kaçınıyorsun?",e:"🤐"},
+    {q:"Gerçek anlamda özgür bir gecen olsaydı, neyi yapardın?",e:"🌙"},
+    {q:"Birinin sadece fiziksel çekimine kapılıp hata yaptın mı?",e:"😅"},
+    {q:"En kısa ilişkin ne kadar sürdü, neden bitti?",e:"⏱️"},
+    {q:"Hiç birini gerçekten kaybettiğini geç mi anladın?",e:"🌫️"},
+    {q:"Bir ilişkide 'bu yeterli' diyemedin mi hiç?",e:"🪞"},
+    {q:"Birinin gözünde farklı görünmek için ne yaptın?",e:"🎭"},
+    {q:"Romantik hayal kurduğun en saçma senaryo neydi?",e:"💭"},
+    {q:"En son ne zaman gerçekten arzulandığını hissettin?",e:"✨"},
+    {q:"Bir ilişkide en çok ne zaman mutluluk hissettin?",e:"💫"},
+    {q:"Hayatında en çok hangi romantik an seni şaşırttı?",e:"😮"},
+    {q:"Birine 'seni istiyorum' demekten hiç korktun mu?",e:"💪"},
+    {q:"En derin romantik bağ kurduğun kişi kim oldu?",e:"🔗"},
+    {q:"Bir ilişkide en çok hangi kelime seni etkiliyor?",e:"🗣️"},
+    {q:"Hiç başkası için kendini kaybettiğini hissettin mi?",e:"🌊"},
+    {q:"Gerçek anlamda 'bu aşk' dediğin an oldu mu?",e:"❤️‍🔥"},
+    {q:"En son ne zaman birinin eksikliğini o kadar çok hissettin?",e:"🫀"},
+    {q:"Bir ilişkide en büyük dönüm noktanı nasıl atlattın?",e:"🌅"},
+  ],
+  trust:[
+    {q:"Buradaki herkesin sana tamamen güvendiğini düşünüyor musun?",e:"🔍"},
+    {q:"Bir arkadaşının sırrını ifşa ettiğin oldu mu, itiraf et.",e:"🔓"},
+    {q:"Grubundakilere hiç ihanet ettiğini düşündüğün bir an oldu mu?",e:"⚡"},
+    {q:"Güven duymakta en çok zorlandığın kişi kim?",e:"🔐"},
+    {q:"Hayatında sana en büyük ihaneti kim yaptı?",e:"🗡️"},
+    {q:"Bir arkadaşına söylediğin ama gerçekte inanmadığın şey neydi?",e:"🎭"},
+    {q:"Grubun en zayıf halkası sence kim?",e:"🔗"},
+    {q:"Seni şu ana kadar en çok kim incitti?",e:"💔"},
+    {q:"Bir kişinin gerçek niyetini anlamak sana ne kadar sürer?",e:"⏱️"},
+    {q:"İnsanlara kolayca mı güveniyorsun, yoksa bekleyip mi izliyorsun?",e:"👁️"},
+    {q:"En son ne zaman bir arkadaşına güvenemediğini fark ettin?",e:"😔"},
+    {q:"Bir sırrını kimseyle paylaşmamak için ne yaptın?",e:"🔒"},
+    {q:"Grubun içinde en güvensiz hissettiğin kişi kim?",e:"😬"},
+    {q:"Hayatında kaç tane gerçekten güvendiğin insan var?",e:"🤝"},
+    {q:"Bir arkadaşının sana karşı yalan söylediğini anladın mı?",e:"🔎"},
+    {q:"Güveni yeniden kazanmak için en çok ne gerekir?",e:"🌱"},
+    {q:"Bir ilişkide ihaneti affedebilir misin?",e:"🙏"},
+    {q:"Kendine ne zaman ihanet ettiğini düşündün?",e:"🪞"},
+    {q:"Grubunuzda gerçekten şeffaf olduğunuzu düşünüyor musunuz?",e:"💎"},
+    {q:"Güven duyduğun birinin sana yalan söylediğini öğrendiğinde ne yaptın?",e:"😤"},
+    {q:"Hayatında en çok güven konusunda zorlandığın ilişki hangisiydi?",e:"⛈️"},
+    {q:"Birinin güvenini kazanmak için ne kadar çaba sarf edersin?",e:"💪"},
+    {q:"Sana söylenen ama hiç inanmadığın şey ne?",e:"🤨"},
+    {q:"Bir sırrı tutmak için en çok ne zaman zorlandın?",e:"😮‍💨"},
+    {q:"En büyük güven krizini atlatmanın ardından ne hissettin?",e:"🌅"},
+    {q:"Kişiliğinin en çok hangi yönünü gizliyorsun?",e:"🫥"},
+    {q:"Grubunda en saçma bulduğun görüşü desteklemek zorunda kaldın mı?",e:"🙄"},
+    {q:"Birinin sana olan güvenini yanlışlıkla kırdığın oldu mu?",e:"😔"},
+    {q:"Seni en çok hangi konuda kandırılmaya açık görüyorlar?",e:"🎣"},
+    {q:"Hayatındaki en önemli ilişkide güveni nasıl inşa ettin?",e:"🏗️"},
+    {q:"Bir arkadaşın sana 'dürüst ol' dediğinde ne hissediyorsun?",e:"😳"},
+    {q:"Güveni test ettiğin bir yönteminiz var mı?",e:"🧪"},
+    {q:"Grubunda en çok kimin gerçek anlamda dürüst olduğunu düşünüyorsun?",e:"⚖️"},
+    {q:"En son ne zaman kendine dürüst olmak zor geldi?",e:"🌊"},
+    {q:"Bir arkadaşına karşı içten davranamadığın bir anı anlat.",e:"🎭"},
+    {q:"Sana hiç 'sen güvenilmezsin' diyen biri oldu mu?",e:"😢"},
+    {q:"Güvensizliğin en çok hangi ilişkini etkiledi?",e:"💔"},
+    {q:"'Bu kişiye güvenemem' dediğinde yanıldığın oldu mu?",e:"🔄"},
+    {q:"Grubunuzun en büyük ortak sırrı ne?",e:"🤐"},
+    {q:"Bir arkadaşını kurtarmak için yalan söyledin mi?",e:"🛡️"},
+    {q:"Güven tamamen kaybolduğunda bir ilişkiyi kurtarabilir misin?",e:"🆘"},
+    {q:"En zor itirafını yapmak zorunda kaldığın an?",e:"💬"},
+    {q:"Birinin gözünde değer kaybetmek ne kadar sürdü?",e:"⏳"},
+    {q:"En son ne zaman kendinle dürüst bir hesaplaşma yaptın?",e:"🪞"},
+    {q:"Seni en çok hangi kişilik özelliğin güvensiz kılıyor?",e:"🔮"},
+    {q:"Bir arkadaşından sır tutması için destek istedin mi?",e:"🤫"},
+    {q:"Hayatında en büyük güven sarsıntısını yaşadığın dönem hangisiydi?",e:"🌪️"},
+    {q:"Grupta gerçekten 'evet' demek istemediğin halde kaç kez evet dedin?",e:"😶"},
+    {q:"Şu an buradakilerden biri seni hayal kırıklığına uğratıyor mu?",e:"😞"},
+    {q:"Şu an buradaki herkes için tek bir şey değiştirebilseydin, ne olurdu?",e:"✨"},
+  ],
+  date:[
+    {q:"İlk randevuda karşındakinde en çok neyi merak edersin?",e:"🔍"},
+    {q:"Biriyle buluşmadan önce sosyal medyasını araştırıyor musun?",e:"📱"},
+    {q:"İdeal bir buluşma sence nasıl olmalı?",e:"🌟"},
+    {q:"Date sırasında sessizlik olunca ne yapıyorsun?",e:"🤫"},
+    {q:"İlk buluşmada seni en çok ne etkiler?",e:"✨"},
+    {q:"Randevuda en büyük kırmızı çizgin nedir?",e:"🚫"},
+    {q:"Bir kişinin karakterini ilk 10 dakikada anlayabilir misin?",e:"⏱️"},
+    {q:"Date'te hesabı kim ödemeli?",e:"💳"},
+    {q:"İkinci buluşmaya evet demeni ne sağlar?",e:"💚"},
+    {q:"Birini ne zaman 'ilginç' bulduğunu anlarsın?",e:"💡"},
+    {q:"İdeal buluşma yeri nerede olurdu?",e:"📍"},
+    {q:"Birinin seni beğendiğini nasıl anlarsın?",e:"😏"},
+    {q:"İlk date kaç saat yeterli olmalı?",e:"⏰"},
+    {q:"Seni en çok ne tür bir konuşma büyüler?",e:"🗣️"},
+    {q:"Date sırasında telefona bakan biri hakkında ne düşünürsün?",e:"📵"},
+    {q:"Birini beğendiğinde nasıl davranıyorsun?",e:"😊"},
+    {q:"İlk buluşmada yalan söyledin mi hiç?",e:"🤥"},
+    {q:"Bir date'in kesinlikle iyi gittiğini nasıl anlarsın?",e:"🎯"},
+    {q:"En garip date deneyimin neydi?",e:"😂"},
+    {q:"Bu kişi tipim değil derken yanıldığın oldu mu?",e:"🔄"},
+    {q:"Date öncesi en çok ne konusunda hazırlık yaparsın?",e:"🪞"},
+    {q:"Birini fazla güzel ya da yakışıklı bulunca ne hissediyorsun?",e:"😳"},
+    {q:"İlk buluşmada seni en çok ne güldürür?",e:"😂"},
+    {q:"Date'te en çok hangi konudan kaçınırsın?",e:"🙈"},
+    {q:"Çoklu date olunca tercihini nasıl yaparsın?",e:"⚖️"},
+    {q:"Birini birden fazla kişiyle görürken nasıl hissediyorsun?",e:"😵"},
+    {q:"En uzun flörtünün ardından ne oldu?",e:"🌅"},
+    {q:"Date sırasında 'bu olmayacak' dediğin an hangisiydi?",e:"😔"},
+    {q:"Birini seçmekte zorlandığında ne yaparsın?",e:"🤔"},
+    {q:"İlk öpücük için ne kadar beklersin?",e:"💋"},
+    {q:"Bir date'te hangi mizah türü seni kazanır?",e:"😄"},
+    {q:"Seni en çok ne tür bir jest etkiler?",e:"🌹"},
+    {q:"İkinci date'e geçmeden kaç gün beklersin?",e:"📅"},
+    {q:"Date sırasında kendin misin yoksa iyi izlenim bırakmaya mı çalışırsın?",e:"🎭"},
+    {q:"Birinin gerçek yüzünü ne zaman görürsün?",e:"🔎"},
+    {q:"Date'te seni en çok ne sıkar?",e:"😒"},
+    {q:"Bir date'ten sonra 'bir daha görmek istemiyorum' dedirten şey ne?",e:"❌"},
+    {q:"Randevu sonrası ilk mesajı kim atmalı?",e:"💬"},
+    {q:"En romantik an içinde ne hissediyorsun?",e:"🫀"},
+    {q:"Seni en çok hangi tip insan heyecanlandırır?",e:"⚡"},
+    {q:"Bir kişi hakkında hemen fikir oluşturur musun?",e:"💭"},
+    {q:"Date'te biri fazla kibarse şüphelenir misin?",e:"🤨"},
+    {q:"İlk buluşmada nasıl giyinirsin?",e:"👗"},
+    {q:"Seni en çok ne tür bir gülümseme etkiler?",e:"😊"},
+    {q:"Birini gerçekten sevmek ile ondan hoşlanmak arasındaki farkı nasıl anlarsın?",e:"❤️"},
+    {q:"Date'te biri seni test etmeye çalışırsa ne yaparsın?",e:"🧪"},
+    {q:"Birden fazla kişiyle konuşmaktan suçluluk duyar mısın?",e:"😬"},
+    {q:"En iyi date'inden sonra ne hissettin?",e:"✨"},
+    {q:"Grubundan birine date önerisi için danışır mısın?",e:"🤝"},
+    {q:"Şu an içinde 'bu kişiyle buluşmak isterdim' dediğin var mı?",e:"💘"},
+  ],
+};
+/* ══════════════════════════════════════════════
+   KATEGORİ META VERİSİ
+══════════════════════════════════════════════ */
+const CAT_META = {
+  mixed: {
+    label:'Karışık Mod', icon:'🎭',
+    emojis:['🎭','🤫','💔','😳','🌟','💘','🔥','😈','💎','🎪','🎠','✨'],
+    subLabel:'Herkes için · Tüm sorular',
+    overlayBg: (card) => `linear-gradient(150deg,${card.frontBg.replace('linear-gradient(145deg,','').replace(')','').split(',').map((c,i)=>i===0?c+' 0%':c+' 100%').join(',')})`,
+    color:'#a78bfa'
+  },
+  male: {
+    label:'Erkekler', icon:'👊',
+    emojis:['👊','💪','🏆','⚔️','🤜','🧠','🦁','🚀','🔥','⚡','🎯','🤝'],
+    subLabel:'Erkek · Erkek modu',
+    color:'#60a5fa'
+  },
+  female: {
+    label:'Kızlar', icon:'💅',
+    emojis:['💅','💃','👑','🌸','💕','🦋','✨','🪞','💞','🌹','🎀','💫'],
+    subLabel:'Kız · Kız modu',
+    color:'#f472b6'
+  },
+  fun: {
+    label:'Eğlence', icon:'🎉',
+    emojis:['🎉','😂','🤪','🎈','🎊','🦄','🌈','🎠','😜','🎪','🎭','🍭'],
+    subLabel:'Kahkaha garantili',
+    color:'#fbbf24'
+  },
+  adult: {
+    label:'+18', icon:'🔥',
+    emojis:['🔥','💋','❤️‍🔥','🌙','💘','😏','🌹','⛓️','💎','✨','🫀','💫'],
+    subLabel:'Yetişkinlere özel · 18+',
+    color:'#f87171'
+  },
+  trust: {
+    label:'Güven Testi', icon:'🔒',
+    emojis:['🔒','🔐','🗡️','⚖️','🛡️','🔍','🤝','💔','🧪','⚡','🌪️','🔎'],
+    subLabel:'Zor · Derin · Dürüst',
+    color:'#34d399'
+  },
+  date: {
+    label:'Çoklu Date', icon:'💘',
+    emojis:['💘','💋','🌹','💍','💌','😍','❤️','🥂','🌙','✨','💫','🎯'],
+    subLabel:'Date & Flört modu',
+    color:'#fb7185'
+  }
+};
+
+const MODE_LABELS={mixed:'🎭 Karışık',male:'👊 Erkekler',female:'💅 Kızlar',fun:'🎉 Eğlence',adult:'🔥 +18',trust:'🔒 Güven',date:'💘 Date'};
+const DIR_IN ={right:'in-right',left:'in-left',bottom:'in-down',top:'in-up'};
+const DIR_OUT={right:'out-right',left:'out-left',bottom:'out-down',top:'out-up'};
+
+/* ══════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════ */
+let shuffled=[],cidx=0,animating=false,dir='right';
+let autoT=null,progT=null,mode=null,activeOv=null;
+let prevQuestion=null;
+const DUR=28000;
+let activeTheme=THEMES[1];
+let activeCard=CARDS[0];
+
+const gameArea=document.getElementById('game-area');
+const curEl=document.getElementById('cur');
+const totEl=document.getElementById('tot');
+const counterEl=document.getElementById('counter');
+const hintEl=document.getElementById('hint');
+const progEl=document.getElementById('progress');
+const menuEl=document.getElementById('menu');
+const backEl=document.getElementById('back-btn');
+const prevBtnEl=document.getElementById('prev-btn');
+const dragShadow=document.getElementById('drag-shadow');
+
+/* ══════════════════════════════════════════════
+   LOADING EKRANI
+══════════════════════════════════════════════ */
+function runLoader(){
+  const bar = document.getElementById('load-bar');
+  const ls  = document.getElementById('loading-screen');
+  let p = 0;
+  
+  function finish(){
+    bar.style.width='100%';
+    ls.classList.add('fade-out');
+    setTimeout(()=>{ ls.style.display='none'; }, 500);
+  }
+
+  /* Progress bar animasyonu */
+  const iv = setInterval(()=>{
+    p += Math.random() * 9 + 5;
+    if(p >= 100){ p = 100; clearInterval(iv); }
+    bar.style.width = p + '%';
+  }, 55);
+
+  /* Maksimum 1.5s — internet olmasa da çalışır */
+  setTimeout(finish, 1500);
+}
+
+/* ══════════════════════════════════════════════════════
+   KATEGORİ GİRİŞ ANİMASYONU v10
+   
+   FAZA 1 (0-1.4s): #intro-screen — büyük emojiler + kategori yazısı
+   FAZA 2 (1.4s+):  #intro-screen solar, #stack-overlay açılır
+                    10 kart birbirini takip ederek masaya iner (2s)
+                    GSAP stacking mantığı: her yeni kart gelirken
+                    alttakiler küçülür (scale dip efekti)
+   FAZA 3 (3.4s+):  En üst kart öne fırlar → stack solar → oyun
+══════════════════════════════════════════════════════ */
+function playIntro(m, onDone){
+/*
+  SİNEMATİK GİRİŞ v18 — CSS efektleri + sıfır kasma
+  0.0s  Grid reveal kapak acilir
+  0.3s  Isik huzme suyurur
+  0.5s  Glitch + LOGO SLAM
+  1.5s  Kategori
+  2.6s  Kart fani
+  3.8s  Kapanıs
+*/
+  const meta = CAT_META[m];
+  const card = activeCard;
+  const cc   = card.thumbGrad[2] || card.decoStroke1;
+
+  const intro   = document.getElementById('game-intro');
+  const cover   = document.getElementById('gi-cover');
+  const bgEl    = document.getElementById('gi-bg');
+  const scan    = document.getElementById('gi-scan');
+  const flash   = document.getElementById('gi-flash');
+  const ring    = document.getElementById('gi-ring');
+  const beam    = document.getElementById('gi-beam');
+  const gridDiv = document.getElementById('gi-grid-reveal');
+  const letEl   = document.getElementById('gi-letters');
+  const karEl   = document.getElementById('gi-kartlari');
+  const shimmer = document.getElementById('gi-shimmer');
+  const glR     = document.getElementById('gi-glitch-r');
+  const glB     = document.getElementById('gi-glitch-b');
+  const catDiv  = document.getElementById('gi-cat');
+  const giIcon  = document.getElementById('gi-icon');
+  const giName  = document.getElementById('gi-name');
+  const giLine  = document.getElementById('gi-line');
+  const giCSub  = document.getElementById('gi-csub');
+  const fanDiv  = document.getElementById('gi-fan');
+
+  function flash1(cls='pop'){ flash.className=''; void flash.offsetWidth; flash.className=cls; }
+  function after(ms,fn){ return setTimeout(fn,ms); }
+
+  /* ── RESET ── */
+  intro.style.setProperty('--cc', cc);
+  intro.classList.add('active');
+  beam.style.setProperty('--cc', cc);
+
+  /* Cover gizlenir - grid reveal zaten kapagi yapar */
+  cover.style.cssText='opacity:0;transition:none;pointer-events:none;';
+  bgEl.style.opacity='0'; bgEl.style.transition='none';
+  scan.className=''; shimmer.className='';
+  beam.className=''; ring.className=''; ring.style.cssText='';
+  glR.className='gi-glitch-r'; glB.className='gi-glitch-b';
+  letEl.innerHTML=''; karEl.style.cssText='opacity:0;transform:scaleX(0.2);';
+  catDiv.style.cssText='opacity:0;';
+  giIcon.className='gi-cat-icon'; giName.className='gi-cat-name';
+  giLine.className='gi-cat-line'; giCSub.className='gi-cat-sub';
+  fanDiv.innerHTML=''; fanDiv.style.cssText='opacity:1;';
+
+  giIcon.textContent=meta.icon; giName.textContent=meta.label;
+  giCSub.textContent=(meta.subLabel||'').toUpperCase();
+
+  /* ── Grid hücreleri oluştur ── */
+  gridDiv.innerHTML='';
+  const COLS=6, ROWS=8, cells=[];
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+    const el=document.createElement('div'); el.className='gi-cell'; gridDiv.appendChild(el); cells.push(el);
+  }
+
+  /* ── Partiküller — CSS animasyonu ── */
+  const pCont=document.createElement('div');
+  pCont.style.cssText='position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5;';
+  intro.appendChild(pCont);
+  const W=window.innerWidth, H=window.innerHeight;
+  for(let i=0;i<24;i++){
+    const p=document.createElement('div');
+    p.className='gi-particle';
+    const sz=3+Math.random()*8;
+    const x=10+Math.random()*80, y=20+Math.random()*70;
+    const dy=(-(40+Math.random()*160))+'px';
+    const dx=((Math.random()-.5)*120)+'px';
+    const dur=2.5+Math.random()*2, del=Math.random()*3;
+    const pop=(0.3+Math.random()*0.5).toFixed(2);
+    p.style.cssText=`
+      width:${sz}px;height:${sz}px;
+      left:${x}%;top:${y}%;
+      background:${cc};
+      --dy:${dy};--dx:${dx};--ds:${0.3+Math.random()*0.7};--pop:${pop};
+      animation:particleFloat ${dur}s ease-in-out ${del}s infinite;
+      filter:blur(${Math.random()*2}px);
+      opacity:0;
+    `;
+    // Bazi parcaciklar beyaz
+    if(i%4===0) p.style.background='rgba(255,255,255,0.8)';
+    pCont.appendChild(p);
+  }
+
+  /* ── Kart canvas ── */
+  const cv=document.createElement('canvas'); cv.width=CW; cv.height=CH;
+  const c2=cv.getContext('2d');
+  const g=c2.createLinearGradient(0,0,0,CH);
+  g.addColorStop(0,card.thumbGrad[0]); g.addColorStop(1,card.thumbGrad[1]);
+  c2.fillStyle=g; c2.beginPath(); c2.roundRect(0,0,CW,CH,16); c2.fill();
+  const sg=c2.createLinearGradient(0,0,CW,0);
+  sg.addColorStop(0,card.thumbGrad[2]||card.decoStroke1);
+  sg.addColorStop(1,card.decoStroke1);
+  c2.fillStyle=sg; c2.fillRect(0,0,CW,5);
+  drawDecoLayer(c2,card);
+  c2.save(); c2.font='900 58px "Cinzel Decorative",serif';
+  c2.textAlign='center'; c2.textBaseline='middle';
+  c2.fillStyle=card.decoStroke1; c2.globalAlpha=0.18; c2.fillText('?',CW/2,CH/2+4); c2.restore();
+  const cardURL=cv.toDataURL();
+
+  /* ══ FAZ 0 — Grid kapak açılır (0→0.6s) ══ */
+  bgEl.style.background=`radial-gradient(ellipse 110% 95% at 50% 50%, ${cc}20 0%, ${cc}06 60%, transparent 80%)`;
+
+  // Hücreleri rastgele sırada aç
+  const order=[...Array(cells.length).keys()].sort(()=>Math.random()-.5);
+  order.forEach((idx,i)=>{
+    after(i*18, ()=>{
+      cells[idx].style.setProperty('--cd','0s');
+      cells[idx].classList.add('open');
+    });
+  });
+
+  after(80, ()=>{ bgEl.style.transition='opacity 1.2s ease'; bgEl.style.opacity='1'; });
+  after(220, ()=>{ scan.classList.add('show'); });
+  after(300, ()=>{ beam.classList.add('sweep'); });
+
+  /* ══ FAZ 1 — LOGO SLAM (0.5→1.4s) ══ */
+  const word='İTİRAF';
+  [...word].forEach((ch,i)=>{
+    const s=document.createElement('span'); s.className='gi-letter'; s.textContent=ch;
+    s.style.textShadow=`0 0 12px ${cc}, 0 0 28px color-mix(in srgb,${cc} 55%,transparent)`;
+    letEl.appendChild(s);
+    after(480+i*68,()=>{ s.classList.add('slam'); });
+  });
+
+  // Son harf inmeden once glitch
+  after(460, ()=>{
+    glR.classList.add('active'); glB.classList.add('active');
+  });
+
+  after(480+word.length*68+280, ()=>{
+    flash1('pop');
+    karEl.style.transition='opacity 0.5s ease, transform 0.5s cubic-bezier(.22,1,.36,1)';
+    karEl.style.opacity='1'; karEl.style.transform='scaleX(1)';
+    after(180,()=>{ shimmer.classList.add('show'); });
+  });
+
+  /* ══ FAZ 2 — KATEGORİ (1.5→2.6s) ══ */
+  after(1500, ()=>{
+    letEl.style.transition='opacity 0.3s ease, transform 0.35s ease';
+    letEl.style.opacity='0'; letEl.style.transform='translateY(-14px) scale(0.87)';
+    karEl.style.transition='opacity 0.25s ease'; karEl.style.opacity='0';
+    shimmer.style.transition='opacity 0.25s ease'; shimmer.style.opacity='0';
+    scan.style.transition='opacity 0.4s ease'; scan.classList.remove('show');
+    beam.className='';
+
+    // Halka
+    ring.style.cssText=`
+      position:absolute;top:52%;left:50%;
+      width:240px;height:240px;border-radius:50%;
+      transform:translate(-50%,-50%) scale(0);
+      opacity:1;pointer-events:none;z-index:7;
+      background:radial-gradient(circle,${cc}44 0%,${cc}16 50%,transparent 72%);
+      filter:blur(4px);
+      transition:transform 0.5s cubic-bezier(.2,.85,.3,1), opacity 0.5s ease 0.15s;
+    `;
+    after(10,()=>{ ring.style.transform='translate(-50%,-50%) scale(3)'; ring.style.opacity='0'; });
+    flash1('pop2');
+    catDiv.style.opacity='1';
+  });
+
+  after(1540, ()=>{ giIcon.classList.add('show'); });
+  after(1900, ()=>{ giName.classList.add('show'); });
+  after(2080, ()=>{ giLine.classList.add('show'); });
+  after(2220, ()=>{ giCSub.classList.add('show'); after(500,()=>{ giIcon.classList.add('pulse'); }); });
+
+  /* ══ FAZ 3 — KART FANI (2.6→3.8s) ══ */
+  after(2620, ()=>{
+    catDiv.style.transition='opacity 0.33s ease, transform 0.33s ease';
+    catDiv.style.opacity='0'; catDiv.style.transform='scale(1.05)';
+
+    const angles=[-24,-15,-7,0,7,15,24];
+    const offs=[-60,-38,-18,0,18,38,60];
+    const N=7;
+
+    for(let i=0;i<N;i++){
+      const fc=document.createElement('div'); fc.className='gi-fc';
+      const fromY=-370, fromR=angles[i]*1.5;
+      fc.style.setProperty('--from',`translate(${offs[i]}px,${fromY}px) rotate(${fromR}deg)`);
+      fc.style.setProperty('--mid', `translate(${offs[i]}px,8px)   rotate(${angles[i]*0.4}deg)`);
+      fc.style.setProperty('--to',  `translate(${offs[i]}px,0px)   rotate(${angles[i]}deg)`);
+      fc.style.backgroundImage=`url(${cardURL})`;
+      fc.style.backgroundSize='cover';
+      fc.style.border=`1.5px solid ${card.frontBorder}`;
+      fc.style.animationDelay=`${i*82}ms`;
+      fc.style.animationDuration='0.46s';
+      fc.style.animationFillMode='forwards';
+      fc.style.animationTimingFunction='cubic-bezier(.22,1.2,.36,1)';
+      fc.style.animationName='cardDrop';
+      fanDiv.appendChild(fc);
+    }
+
+    after(N*82+460, ()=>{
+      const mid=fanDiv.children[3]; if(!mid) return;
+      mid.classList.add('star');
+      mid.style.transition='transform 0.55s cubic-bezier(.34,1.5,.64,1), filter 0.55s ease';
+      mid.style.transform='translate(0px,-44px) rotate(0deg) scale(1.22)';
+      mid.style.filter=`drop-shadow(0 30px 60px rgba(0,0,0,0.9)) drop-shadow(0 0 38px ${cc}88)`;
+      mid.style.zIndex='20';
+      flash1('pop2');
+      [...fanDiv.children].forEach((fc,i)=>{
+        if(i===3) return;
+        after(i*30,()=>{ fc.style.transition='opacity 0.4s ease'; fc.style.opacity='0'; });
+      });
+    });
+  });
+
+  /* ══ FAZ 4 — KAPANIŞ (3.8→4.4s) ══ */
+  after(3800, ()=>{
+    flash1('pop');
+    fanDiv.style.transition='opacity 0.32s ease'; fanDiv.style.opacity='0';
+    after(140,()=>{ cover.style.transition='opacity 0.5s ease'; cover.style.opacity='1'; });
+    after(640,()=>{
+      intro.classList.remove('active');
+      letEl.style.cssText=''; letEl.innerHTML='';
+      karEl.style.cssText='opacity:0;transform:scaleX(0.2);';
+      catDiv.style.cssText='opacity:0;'; catDiv.style.transform='';
+      giIcon.style.cssText=''; giIcon.className='gi-cat-icon';
+      giLine.style.cssText='width:0;transition:none;';
+      fanDiv.innerHTML=''; fanDiv.style.cssText='opacity:1;';
+      ring.style.cssText=''; scan.classList.remove('show');
+      beam.className=''; shimmer.className='';
+      glR.className='gi-glitch-r'; glB.className='gi-glitch-b';
+      gridDiv.innerHTML='';
+      if(pCont.parentNode) pCont.parentNode.removeChild(pCont);
+      cover.style.cssText='opacity:1;transition:none;';
+      document.getElementById('velvet-table').classList.add('show');
+      document.getElementById('velvet-light').classList.add('show');
+      onDone();
+    });
+  });
+}
+/* ══════════════════════════════════════════════
+   AYARLAR PANELİ
+══════════════════════════════════════════════ */
+function buildSettings(){
+  const tr=document.getElementById('theme-row');
+  THEMES.forEach(t=>{
+    const sw=document.createElement('div');
+    sw.className='t-swatch'+(t.id===activeTheme.id?' active':'');
+    sw.innerHTML=`<div class="t-circle" style="background:${t.swatchGrad};border-color:${t.swatchBorder};"></div><div class="t-name">${t.name}</div>`;
+    sw.onclick=()=>applyTheme(t);
+    tr.appendChild(sw);
+  });
+  const cr=document.getElementById('card-row');
+  CARDS.forEach(card=>{
+    const ct=document.createElement('div');
+    ct.className='c-thumb'+(card.id===activeCard.id?' active':'');
+    const mini=document.createElement('div');mini.className='c-mini';
+    const canvas=document.createElement('canvas');canvas.width=38;canvas.height=54;
+    canvas.style.cssText='width:38px;height:54px;display:block;';
+    drawThumb(canvas.getContext('2d'),card);
+    mini.appendChild(canvas);
+    ct.appendChild(mini);
+    ct.innerHTML+=`<div class="c-name">${card.name}</div>`;
+    ct.querySelector('.c-mini').innerHTML='';
+    ct.querySelector('.c-mini').appendChild(canvas);
+    ct.onclick=()=>applyCard(card);
+    cr.appendChild(ct);
+  });
+}
+
+function applyTheme(t){
+  document.body.className=t.cls;
+  activeTheme=t;
+  document.querySelectorAll('.t-swatch').forEach((s,i)=>s.classList.toggle('active',THEMES[i].id===t.id));
+}
+function applyCard(card){
+  activeCard=card;
+  document.querySelectorAll('.c-thumb').forEach((s,i)=>s.classList.toggle('active',CARDS[i].id===card.id));
+}
+function toggleSheet(){document.getElementById('backdrop').classList.toggle('open');}
+function closeSheetOuter(e){if(e.target===document.getElementById('backdrop'))document.getElementById('backdrop').classList.remove('open');}
+
+/* ══════════════════════════════════════════════
+   OYUN
+══════════════════════════════════════════════ */
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+
+function startGame(m){
+  mode=m;
+  shuffled=shuffle(Qs[m]);
+  cidx=0;prevQuestion=null;
+  document.getElementById('backdrop').classList.remove('open');
+  menuEl.classList.add('gone');
+
+  // Giriş animasyonu
+  playIntro(m, ()=>{
+    backEl.classList.add('show');
+    prevBtnEl.classList.add('show');
+    prevBtnEl.disabled=true;
+    counterEl.style.display='flex';
+    totEl.textContent=shuffled.length;
+    updateCounter();
+    createCard(cidx);
+  });
+}
+
+function returnToMenu(){
+  clearTimeout(autoT);stopProg();
+  if(activeOv){activeOv.remove();activeOv=null;}
+  gameArea.innerHTML='';
+  /* Animasyonları yeniden oynat — gone kaldırılmadan önce öğeleri sıfırla */
+  const title=menuEl.querySelector('.menu-title');
+  const rule=menuEl.querySelector('.menu-rule');
+  const sub=menuEl.querySelector('.menu-sub');
+  const btns=menuEl.querySelectorAll('.menu-btn');
+  [title,rule,sub,...btns].forEach(el=>{
+    if(!el)return;
+    el.style.animation='none';
+    el.style.opacity='0';
+  });
+  menuEl.classList.remove('gone');
+  /* Bir frame sonra animasyonları yeniden tetikle */
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(title){title.style.animation='';title.style.opacity='';}
+    if(rule){rule.style.animation='';rule.style.opacity='';}
+    if(sub){sub.style.animation='';sub.style.opacity='';}
+    btns.forEach(b=>{b.style.animation='';b.style.opacity='';});
+  }));
+  backEl.classList.remove('show');
+  prevBtnEl.classList.remove('show');
+  counterEl.style.display='none';
+  hintEl.style.opacity='1';
+  mode=null;animating=false;prevQuestion=null;
+  dragShadow.classList.remove('visible');
+}
+
+function updateCounter(){curEl.textContent=cidx+1;}
+
+/* ══════════════════════════════════════════════
+   ÖNCEKİ SORU
+══════════════════════════════════════════════ */
+function showPrevQuestion(){
+  if(!prevQuestion)return;
+  const ov=document.createElement('div');
+  ov.className='prev-overlay';
+  ov.innerHTML=`
+    <div class="prev-card">
+      <div class="prev-card-label">◀ Önceki Soru · ${prevQuestion.idx+1} / ${shuffled.length}</div>
+      <div class="prev-card-emoji">${prevQuestion.e}</div>
+      <div class="prev-card-q">${prevQuestion.q}</div>
+      <div class="prev-card-close">Kapatmak için dokun</div>
+    </div>
+  `;
+  document.body.appendChild(ov);
+  ov.addEventListener('click',()=>ov.remove());
+}
+
+/* ══════════════════════════════════════════════
+   DESTE SİSTEMİ v8 — state
+══════════════════════════════════════════════ */
+let sceneEl    = null;
+let ghostEls   = [];   // [ghost2(arka), ghost1(ön)] — 2 ghost
+let activeWrap = null;
+let ghostImgData = null; // paylaşılan ghost canvas data
+
+/* Ghost canvas veri URL'si oluştur */
+function buildGhostDataURL(card){
+  const cv = document.createElement('canvas');
+  cv.width = CW; cv.height = CH;
+  const ctx = cv.getContext('2d');
+  /* Gradient arka plan */
+  const grd = ctx.createLinearGradient(0,0,0,CH);
+  grd.addColorStop(0,card.thumbGrad[0]);
+  grd.addColorStop(1,card.thumbGrad[1]);
+  ctx.fillStyle = grd;
+  ctx.beginPath(); ctx.roundRect(0,0,CW,CH,18); ctx.fill();
+  /* Üst şerit */
+  const sg = ctx.createLinearGradient(0,0,CW,0);
+  sg.addColorStop(0,card.thumbGrad[2]||card.decoStroke1);
+  sg.addColorStop(1,card.decoStroke1);
+  ctx.fillStyle = sg; ctx.fillRect(0,0,CW,5);
+  /* Deko katmanı (clearRect YOK) */
+  drawDecoLayer(ctx, card);
+  /* Soru işareti — kartın kendi rengiyle */
+  ctx.save();
+  ctx.font = 'bold 82px var(--display-font,serif)';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle = card.decoStroke1;
+  ctx.globalAlpha = 0.18;
+  ctx.fillText('?', CW/2, CH/2+4);
+  ctx.restore();
+  return cv.toDataURL();
+}
+
+/* ══════════════════════════════════════════════
+   KART OLUŞTUR
+══════════════════════════════════════════════ */
+function createCard(idx){
+  if(idx >= shuffled.length){showGameOver();return;}
+  const {q,e} = shuffled[idx];
+  const card = activeCard;
+
+  gameArea.innerHTML = '';
+  ghostEls = [];
+
+  // Eski drag dinleyicilerini temizle
+  if(dragAbort){ dragAbort.abort(); dragAbort=null; }
+
+  const container = document.createElement('div');
+  container.className = 'card-container';
+
+  const scene = document.createElement('div');
+  scene.className = 'card-scene';
+  sceneEl = scene;
+
+  // Perspektif gölgesi
+  const shadow = document.createElement('div');
+  shadow.className = 'deck-shadow';
+  scene.appendChild(shadow);
+
+  // Ghost img paylaşılan canvas
+  ghostImgData = buildGhostDataURL(card);
+
+  // ghost2 (en arka)
+  const g2 = document.createElement('div');
+  g2.className = 'ghost-layer2';
+  const img2 = document.createElement('img');
+  img2.src = ghostImgData;
+  img2.style.cssText='width:168px;height:240px;border-radius:18px;display:block;';
+  g2.appendChild(img2);
+  scene.appendChild(g2);
+
+  // ghost1 (ön)
+  const g1 = document.createElement('div');
+  g1.className = 'ghost-layer';
+  const img1 = document.createElement('img');
+  img1.src = ghostImgData;
+  img1.style.cssText='width:168px;height:240px;border-radius:18px;display:block;';
+  g1.appendChild(img1);
+  scene.appendChild(g1);
+
+  ghostEls = [g2, g1]; // [arka, ön]
+
+  // Gerçek kart
+  const wrap = document.createElement('div');
+  wrap.className = 'card-wrapper floating';
+  const inner = document.createElement('div'); inner.className='card-inner';
+  const front = buildCardFace(card);
+  const back  = document.createElement('div'); back.className='card-face card-back card-back-face';
+  back.style.background=card.frontBg; back.style.border=`1.5px solid ${card.frontBorder}`;
+  const bd=document.createElement('canvas'); bd.style.cssText='position:absolute;inset:0;width:100%;height:100%;opacity:0.5;';
+  bd.width=CW; bd.height=CH; drawDeco(bd.getContext('2d'),card); back.appendChild(bd);
+  inner.appendChild(front); inner.appendChild(back);
+  wrap.appendChild(inner);
+  scene.appendChild(wrap);
+  activeWrap = wrap;
+
+  attachDrag(wrap, q, e);
+
+  const numLabel = document.createElement('div');
+  numLabel.className = 'card-num-label';
+  numLabel.textContent = `${idx+1}  /  ${shuffled.length}`;
+
+  container.appendChild(scene);
+  container.appendChild(numLabel);
+  gameArea.appendChild(container);
+}
+function buildCardFace(card){
+  /* ─ Hologram maskesi: MASK_FN çizer, Q oval alanını keser ─ */
+  const mc=document.createElement('canvas');
+  mc.width=CW; mc.height=CH;
+  const mctx=mc.getContext('2d');
+  MASK_FN[card.id](mctx);
+  /* Soru işaretinin geleceği merkez oval — hologram buraya gelmesin */
+  mctx.save();
+  mctx.globalCompositeOperation='destination-out';
+  mctx.beginPath();
+  mctx.ellipse(CW/2, CH/2-6, 58, 66, 0, 0, Math.PI*2);
+  mctx.fill();
+  mctx.restore();
+  const mu=mc.toDataURL();
+
+  const front=document.createElement('div');
+  front.className='card-face card-front';
+  front.style.background=card.frontBg;
+  front.style.border=`1.5px solid ${card.frontBorder}`;
+  /* Hafif iç parlaklık */
+  front.style.boxShadow=`inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.2)`;
+
+  /* Deste ghost kartları (oyun ekranında) */
+  for(let g=0;g<2;g++){
+    const ghost=document.createElement('div');
+    ghost.className='card-deck-ghost';
+    ghost.style.background=card.frontBg;
+    ghost.style.borderColor=card.frontBorder;
+    front.appendChild(ghost);
+  }
+
+  /* Hologram katmanı — tam spektrum rainbow, kart rengine göre hue tonu */
+  const holo=document.createElement('div');
+  holo.className='card-holo';
+  holo.style.setProperty('--card-hue', card.cardHue||'0deg');
+  /* Mask ile desen uygulanır */
+  holo.style.webkitMaskImage=`url(${mu})`;
+  holo.style.maskImage=`url(${mu})`;
+  front.appendChild(holo);
+
+  /* Glitter sparkle katmanı */
+  const glitter=document.createElement('div');
+  glitter.className='card-glitter';
+  glitter.style.webkitMaskImage=`url(${mu})`;
+  glitter.style.maskImage=`url(${mu})`;
+  front.appendChild(glitter);
+
+  /* Shine overlay */
+  const shine=document.createElement('div');
+  shine.className='card-shine';
+  front.appendChild(shine);
+
+  /* Deco canvas (çerçeve + eskitme) */
+  const dg=document.createElement('div'); dg.className='deco-group';
+  const dc=document.createElement('canvas'); dc.className='card-deco';
+  dc.width=CW; dc.height=CH;
+  drawDeco(dc.getContext('2d'),card);
+  dg.appendChild(dc);
+  front.appendChild(dg);
+
+  /* ─────────────────────────────────────────────────────────
+   * Soru İşareti — TEK ADET, hologram efektli
+   *
+   * .cq-wrap → absolute, kartın merkezinde
+   * .cq-base → kartın decoQ renginde, %28 opak zemin
+   * .cq-shine → kartın hologram renklerinden background-clip:text gradient
+   *             background-position mouse hareketiyle güncellenir (setHoloVars)
+   *
+   * Hologram maskesi bu alanı dışarıda bıraktığı için:
+   * → Desen soru işaretinin üzerine GELMEZ
+   * → Soru işareti kendi hologram efektiyle PARLAR
+   * ───────────────────────────────────────────────────────── */
+  const qWrap=document.createElement('div');
+  qWrap.className='cq-wrap';
+
+  const qBase=document.createElement('div');
+  qBase.className='cq-base';
+  qBase.textContent='?';
+  qBase.style.color=card.decoStroke1;
+
+  const qShine=document.createElement('div');
+  qShine.className='cq-shine';
+  qShine.textContent='?';
+
+  const qSparkle=document.createElement('div');
+  qSparkle.className='cq-sparkle';
+  qSparkle.textContent='?';
+
+  qWrap.appendChild(qBase);
+  qWrap.appendChild(qShine);
+  qWrap.appendChild(qSparkle);
+  front.appendChild(qWrap);
+
+  /* Alt etiket kaldırıldı */
+
+  return front;
+}
+
+/* ══════════════════════════════════════════════
+   SÜRÜKLEME — event leak fix, AbortController
+══════════════════════════════════════════════ */
+let dragAbort = null; // global abort controller for drag listeners
+
+function attachDrag(wrap,q,e){
+  // Eski drag listener'ları temizle
+  if(dragAbort){ dragAbort.abort(); dragAbort=null; }
+  dragAbort = new AbortController();
+  const sig = dragAbort.signal;
+
+  let sx,sy,cx=0,cy=0,drag=false;
+  const T=55;
+
+  wrap.addEventListener('mousemove',ev=>{
+    if(drag||wrap.classList.contains('is-flipped'))return;
+    wrap.classList.remove('floating');setHoloVars(wrap,ev.clientX,ev.clientY);
+  },{signal:sig});
+  wrap.addEventListener('mouseleave',()=>{
+    if(drag)return;resetHoloVars(wrap);
+    if(!wrap.classList.contains('is-flipped'))wrap.classList.add('floating');
+  },{signal:sig});
+
+  const dn=ev=>{
+    if(animating)return;drag=true;
+    wrap.classList.add('is-dragging');wrap.classList.remove('floating');
+    const t=ev.touches?ev.touches[0]:ev;sx=t.clientX;sy=t.clientY;
+    hintEl.style.opacity='0';
+    dragShadow.classList.add('visible');
+  };
+  const mv=ev=>{
+    if(!drag)return;ev.preventDefault();
+    const t=ev.touches?ev.touches[0]:ev;
+    cx=t.clientX-sx;cy=t.clientY-sy;
+    const d=Math.sqrt(cx*cx+cy*cy),nd=Math.min(d/200,1);
+    const rot=(cx/200)*10;
+    const bx=(cy/200)*20,by=-(cx/200)*20;
+    wrap.style.transform=`translate(${cx}px,${cy}px) rotate(${rot}deg)`;
+    wrap.style.setProperty('--bend-x',by+'deg');wrap.style.setProperty('--bend-y',bx+'deg');
+    wrap.style.setProperty('--sx',1+(Math.abs(cx)/200)*.03);wrap.style.setProperty('--sy',1+(Math.abs(cy)/200)*.03);
+    const o=Math.min(.9,nd*.85+.25);
+    wrap.style.setProperty('--mx',(50+(cx/200)*12)+'%');wrap.style.setProperty('--my',(50+(cy/200)*12)+'%');
+    wrap.style.setProperty('--posx',(50-(cx/200)*90)+'%');wrap.style.setProperty('--posy',(50-(cy/200)*150)+'%');
+    wrap.style.setProperty('--o',o);
+    const b=wrap.getBoundingClientRect();
+    const shadowOffset=18+nd*20;
+    dragShadow.style.cssText=`left:${b.left}px;top:${b.top+shadowOffset}px;width:${b.width}px;height:${b.height}px;opacity:${0.4+nd*0.3};transform:rotate(${rot}deg) scaleX(${0.88+nd*0.04}) scaleY(0.25);filter:blur(${8+nd*8}px);border-radius:18px;background:rgba(0,0,0,0.6);`;
+  };
+  const up=()=>{
+    if(!drag)return;drag=false;
+    wrap.classList.remove('is-dragging');
+    dragShadow.classList.remove('visible');
+    dragShadow.style.cssText='';
+    const d=Math.sqrt(cx*cx+cy*cy);
+    if(d>T){
+      dir=Math.abs(cx)>Math.abs(cy)?(cx>0?'right':'left'):(cy>0?'bottom':'top');
+      flipCard(wrap,q,e);
+    } else {
+      wrap.style.transition='transform .55s cubic-bezier(.34,1.8,.64,1)';
+      wrap.style.transform='translate(0,0)';
+      wrap.style.setProperty('--bend-x','0deg');wrap.style.setProperty('--bend-y','0deg');
+      wrap.style.setProperty('--sx','1');wrap.style.setProperty('--sy','1');
+      setTimeout(()=>{wrap.style.transition='';resetHoloVars(wrap);wrap.classList.add('floating');},550);
+    }
+  };
+
+  wrap.addEventListener('mousedown',dn,{signal:sig});
+  wrap.addEventListener('touchstart',dn,{passive:false,signal:sig});
+  window.addEventListener('mousemove',mv,{signal:sig});
+  window.addEventListener('touchmove',mv,{passive:false,signal:sig});
+  window.addEventListener('mouseup',up,{signal:sig});
+  window.addEventListener('touchend',up,{signal:sig});
+}
+
+/* ══════════════════════════════════════════════
+   FLIP + OVERLAY — kart tasarımına uyumlu
+══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════
+   FLIP + OVERLAY — kesin düzeltme
+   - animating flag tüm akışı bloke eder
+   - overlay tekrar açılamaz (isClosing guard)
+   - resetCard: inline style sıfırlaması, animation temizliği
+══════════════════════════════════════════════ */
+let isClosingOv = false; // overlay kapanış guard
+
+function flipCard(wrap,q,e){
+  if(animating) return;
+  animating = true;
+  isClosingOv = false;
+
+  wrap.style.transition = 'transform .18s ease';
+  wrap.style.transform  = 'translate(0,0)';
+  wrap.style.setProperty('--bend-x','0deg');
+  wrap.style.setProperty('--bend-y','0deg');
+  wrap.style.setProperty('--sx','1');
+  wrap.style.setProperty('--sy','1');
+  wrap.classList.remove('floating');
+  wrap.classList.add('dir-'+dir,'shake');
+  setTimeout(()=>wrap.classList.remove('shake'),400);
+
+  setTimeout(()=>{
+    wrap.style.transition = '';
+    wrap.style.transform  = '';
+    wrap.classList.add('is-flipped');
+    setTimeout(()=>showOverlay(wrap,q,e), 620);
+  }, 80);
+}
+
+function showOverlay(wrap,q,e){
+  // Eğer zaten bir overlay varsa temizle
+  if(activeOv){ activeOv.remove(); activeOv=null; }
+
+  const card = activeCard;
+  const ov = document.createElement('div');
+  ov.className = 'overlay';
+  ov.style.background = `linear-gradient(150deg,${card.thumbGrad[0]} 0%,${card.thumbGrad[1]} 55%,${card.thumbGrad[0]} 100%)`;
+
+  ov.innerHTML = `
+    <div class="overlay-holo-panel" style="background-image:${card.holoLayers[0]};opacity:0.04;filter:${card.holoFilter};"></div>
+    <div class="overlay-stripe"></div>
+    <div class="ov-orn tl">❧</div><div class="ov-orn tr">❧</div>
+    <div class="ov-orn bl">❧</div><div class="ov-orn br">❧</div>
+    <div class="ov-card-deco"  style="background:${card.frontBg};border-color:${card.frontBorder};"></div>
+    <div class="ov-card-deco2" style="background:${card.frontBg};border-color:${card.frontBorder};"></div>
+    <div class="ov-body">
+      <div class="ov-badge" style="color:${card.thumbGrad[2]};border-color:${card.frontBorder};">${MODE_LABELS[mode]}</div>
+      <div class="ov-emoji">${e}</div>
+      <div class="ov-line" style="background:linear-gradient(90deg,${card.thumbGrad[2]},${card.decoStroke1});"></div>
+      <p class="magic-text" id="mtp" style="color:rgba(255,255,255,0.96);"></p>
+      <div class="ov-line" style="background:linear-gradient(90deg,${card.thumbGrad[2]},${card.decoStroke1});"></div>
+      <div class="ov-num"  style="color:rgba(255,255,255,0.45)">${cidx+1} / ${shuffled.length}</div>
+      <div class="ov-hint" style="color:rgba(255,255,255,0.35)">Ekrana dokun · devam et</div>
+    </div>`;
+
+  document.body.appendChild(ov);
+  activeOv = ov;
+
+  requestAnimationFrame(()=>{
+    ov.classList.add(DIR_IN[dir]);
+    setTimeout(()=>{
+      const p = ov.querySelector('#mtp');
+      if(p) magicReveal(p,q,card);
+    }, 300);
+  });
+
+  startProg();
+  autoT = setTimeout(()=>doCloseOv(ov,wrap), DUR);
+
+  // TEK click listener, once:true
+  ov.addEventListener('click', ()=>{
+    clearTimeout(autoT);
+    stopProg();
+    doCloseOv(ov,wrap);
+  }, {once:true});
+}
+
+function doCloseOv(ov, wrap){
+  if(isClosingOv) return;  // çift kapanmayı engelle
+  isClosingOv = true;
+  clearTimeout(autoT);
+  stopProg();
+
+  prevQuestion = {q:shuffled[cidx].q, e:shuffled[cidx].e, idx:cidx};
+  prevBtnEl.disabled = false;
+
+  ov.classList.remove(DIR_IN[dir]);
+  ov.classList.add(DIR_OUT[dir]);
+
+  setTimeout(()=>{
+    ov.remove();
+    activeOv = null;
+    resetCard(wrap);
+  }, 400);
+}
+
+function magicReveal(el,txt,card){
+  el.innerHTML=''; let d=0;
+  [...txt].forEach(ch=>{
+    if(ch===' '){ el.appendChild(document.createTextNode(' ')); return; }
+    const s=document.createElement('span');
+    s.className='mc'; s.textContent=ch;
+    s.style.animationDelay=d+'ms';
+    if(card) s.style.setProperty('--accent-color',card.thumbGrad[2]);
+    el.appendChild(s); d+=26;
+  });
+}
+
+/* ══════════════════════════════════════════════
+   DESTE GEÇİŞİ — kesin düzeltme
+   
+   Sekans (ms):
+   0    → flip geri döner (CSS transition)
+   420  → kart sağa kayar (card-retiring anim başlar)
+          ghost-layer → öne çıkar (ghost-activating)
+          ghost-layer2 → ghost-layer pozisyonuna (ghost-shifting)
+   980  → cidx++, animasyonlar temizlenir
+          wrap inline style/class sıfırlanır
+          yeni drag bağlanır
+          animating=false
+══════════════════════════════════════════════ */
+function resetCard(wrap){
+  isClosingOv = false;
+
+  // 1) Flip class'larını kaldır — kart düz dönüş yapar
+  wrap.classList.remove('is-flipped','dir-right','dir-left','dir-top','dir-bottom');
+  wrap.classList.remove('floating','is-dragging');
+  // card-inner'ın transition'ını geçici koru (flip geri dönüşü)
+  const inner = wrap.querySelector('.card-inner');
+  if(inner) inner.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+
+  // 2) Flip geri dönüşü tamamlansın, sonra geçiş animasyonu
+  setTimeout(()=>{
+    if(inner) inner.style.transition = '';
+
+    // Drag listener'ları temizle
+    if(dragAbort){ dragAbort.abort(); dragAbort=null; }
+
+    // Mevcut animasyonları temizle (önceki kalıntı)
+    wrap.style.animation = 'none';
+    wrap.style.cssText = 'position:absolute;left:0;top:0;z-index:3;';
+
+    // Retire animasyonu
+    wrap.style.animation = 'cardRetireRight 0.52s cubic-bezier(.4,0,.2,1) forwards';
+
+    // Ghost'lar öne kayar
+    if(ghostEls[1]){
+      ghostEls[1].style.animation = 'ghostToActive 0.65s cubic-bezier(.22,1,.36,1) 0.15s forwards';
+      ghostEls[1].style.zIndex = '9';
+    }
+    if(ghostEls[0]){
+      ghostEls[0].style.animation = 'ghostShiftForward 0.5s cubic-bezier(.22,1,.36,1) 0.2s forwards';
+    }
+
+    // Geçiş tamamlandıktan sonra
+    setTimeout(()=>{
+      cidx++;
+      updateCounter();
+
+      if(cidx >= shuffled.length){
+        if(sceneEl && sceneEl.parentElement) sceneEl.parentElement.remove();
+        showGameOver();
+        animating = false;
+        return;
+      }
+
+      // Tüm animasyonları ve inline style'ları temizle
+      wrap.style.cssText = '';
+      wrap.style.animation = '';
+      wrap.className = 'card-wrapper floating';
+
+      if(ghostEls[1]){
+        ghostEls[1].style.animation = '';
+        ghostEls[1].style.zIndex = '';
+        // Ghost 1'i CSS'teki statik pozisyonuna döndür
+        ghostEls[1].style.transform = '';
+        ghostEls[1].style.opacity  = '';
+        ghostEls[1].style.filter   = '';
+      }
+      if(ghostEls[0]){
+        ghostEls[0].style.animation = '';
+        ghostEls[0].style.transform = '';
+        ghostEls[0].style.opacity  = '';
+        ghostEls[0].style.filter   = '';
+      }
+
+      // Yeni soruya drag bağla
+      const {q,e} = shuffled[cidx];
+      attachDrag(wrap,q,e);
+
+      // Sayaç
+      const nl = gameArea.querySelector('.card-num-label');
+      if(nl) nl.textContent = `${cidx+1}  /  ${shuffled.length}`;
+
+      animating = false;
+    }, 600);
+
+  }, 420);
+}
+
+function startProg(){
+  const t0=Date.now();
+  progEl.style.background = `linear-gradient(90deg,${activeCard.thumbGrad[2]},${activeCard.decoStroke1})`;
+  progT=setInterval(()=>{progEl.style.width=Math.min(((Date.now()-t0)/DUR)*100,100)+'%';},100);
+}
+function stopProg(){clearInterval(progT);progEl.style.width='0%';}
+
+function setHoloVars(w,mx,my){
+  const b=w.getBoundingClientRect();
+  const dx=(mx-(b.left+b.width/2))/(b.width*.55),dy=(my-(b.top+b.height/2))/(b.height*.55);
+  const px=((mx-b.left)/b.width)*100,py=((my-b.top)/b.height)*100;
+  const o=Math.min(1,Math.sqrt(dx*dx+dy*dy)*.85+.2);
+  w.style.setProperty('--mx',px+'%');w.style.setProperty('--my',py+'%');
+  w.style.setProperty('--posx',(px*1.8)+'%');w.style.setProperty('--posy',(py*3.2)+'%');
+  w.style.setProperty('--o',o);
+  /* cq-shine background-position güncelle — hologram soru işareti parlar */
+  const qs=w.querySelector('.cq-shine');
+  if(qs){
+    qs.style.backgroundPosition=`${px*2.2}% ${py*2.2}%`;
+    qs.style.animationDuration='1.1s';
+  }
+}
+function resetHoloVars(w){
+  w.style.setProperty('--o','0');
+  w.style.setProperty('--posx','50%');
+  w.style.setProperty('--posy','50%');
+  const qs=w.querySelector('.cq-shine');
+  if(qs){qs.style.backgroundPosition='';qs.style.animationDuration='';}
+}
+
+function showGameOver(){
+  gameArea.innerHTML='';
+  const d=document.createElement('div');d.className='game-over';
+  d.innerHTML=`
+    <div class="go-emoji">🎉</div>
+    <h2 class="go-title">Bitti!</h2>
+    <p class="go-sub">Tüm sırlar açığa çıktı · ${shuffled.length} soru</p>
+    <div class="go-btns">
+      <button class="go-btn primary" id="go-reshuffle">
+        <span>🃏</span><span>Desteni Karıştır · Yeniden Oyna</span>
+      </button>
+      <button class="go-btn" id="go-menu">
+        <span>🏠</span><span>Ana Menü</span>
+      </button>
+    </div>
+  `;
+  document.body.appendChild(d);
+
+  document.getElementById('go-menu').onclick=()=>{d.remove();returnToMenu();};
+
+  document.getElementById('go-reshuffle').onclick=()=>{
+    d.remove();
+    startShuffleAnimation(()=>{
+      /* Yeni karışık deste ile oyunu sıfırla */
+      shuffled=shuffle(shuffled);
+      cidx=0; prevQuestion=null;
+      gameArea.innerHTML='';
+      const totEl=gameArea.querySelector('.card-num-label');
+      createCard(cidx);
+    });
+  };
+}
+
+/* ──────────────────────────────────────────
+   KART KARIŞTIRMA ANİMASYONU
+   3 kart sahneye fırlar, fan → flip → yığılır
+   ~2.5s sonra callback
+────────────────────────────────────────── */
+function startShuffleAnimation(onDone){
+  const overlay  = document.getElementById('shuffle-overlay');
+  const cardsDiv = document.getElementById('shuffle-cards');
+  const titleEl  = document.getElementById('shuffle-title');
+  const readyEl  = document.getElementById('shuffle-ready');
+  const card     = activeCard;
+  const cc       = card.thumbGrad[2]||card.decoStroke1;
+
+  /* Kart görseli */
+  const cv=document.createElement('canvas'); cv.width=CW; cv.height=CH;
+  const c2=cv.getContext('2d');
+  const g=c2.createLinearGradient(0,0,0,CH);
+  g.addColorStop(0,card.thumbGrad[0]); g.addColorStop(1,card.thumbGrad[1]);
+  c2.fillStyle=g; c2.beginPath(); c2.roundRect(0,0,CW,CH,16); c2.fill();
+  drawDecoLayer(c2,card);
+  c2.save(); c2.font='900 55px "Cinzel Decorative",serif';
+  c2.textAlign='center'; c2.textBaseline='middle';
+  c2.fillStyle=card.decoStroke1; c2.globalAlpha=0.18; c2.fillText('?',CW/2,CH/2+4); c2.restore();
+  const cardURL=cv.toDataURL();
+
+  /* Reset */
+  cardsDiv.innerHTML='';
+  titleEl.style.cssText='opacity:0;transform:translateY(8px);transition:none;';
+  readyEl.style.cssText='opacity:0;transform:translateY(8px);transition:none;';
+  overlay.classList.add('active');
+
+  /* Kart elementleri */
+  const N=7;
+  const cards=[];
+  for(let i=0;i<N;i++){
+    const c=document.createElement('div'); c.className='s-card';
+    c.style.backgroundImage=`url(${cardURL})`;
+    c.style.backgroundSize='cover';
+    c.style.border=`1.5px solid ${card.frontBorder}`;
+    c.style.transform=`translate(-50%,-50%) translateY(-300px) rotate(${(Math.random()-.5)*60}deg) scale(0.5)`;
+    c.style.opacity='0';
+    c.style.zIndex=String(i+1);
+    cardsDiv.appendChild(c); cards.push(c);
+  }
+
+  /* Başlık */
+  setTimeout(()=>{
+    titleEl.style.transition='opacity .4s ease, transform .4s ease';
+    titleEl.style.opacity='1'; titleEl.style.transform='translateY(0)';
+  },100);
+
+  /* Kartlar peş peşe düşer */
+  cards.forEach((c,i)=>{
+    setTimeout(()=>{
+      c.style.transition='transform .42s cubic-bezier(.22,1.25,.36,1), opacity .18s ease';
+      c.style.opacity='0.92';
+      const angle=(i-3)*10;
+      const ox=(i-3)*22;
+      c.style.transform=`translate(calc(-50% + ${ox}px),-50%) rotate(${angle}deg) scale(1)`;
+    }, 200+i*80);
+  });
+
+  /* Karıştırma hareketi — kartlar yelpaze olup yeniden yığılır */
+  setTimeout(()=>{
+    cards.forEach((c,i)=>{
+      const delay=i*60;
+      setTimeout(()=>{
+        c.style.transition=`transform .35s cubic-bezier(.4,0,.2,1) ${delay}ms`;
+        const angle=(Math.random()-.5)*40;
+        const ox=(Math.random()-.5)*60;
+        const oy=(Math.random()-.5)*30;
+        c.style.transform=`translate(calc(-50% + ${ox}px),calc(-50% + ${oy}px)) rotate(${angle}deg) scale(1.05)`;
+      },0);
+    });
+  }, 200+N*80+150);
+
+  /* İkinci karıştırma */
+  setTimeout(()=>{
+    cards.forEach((c,i)=>{
+      setTimeout(()=>{
+        c.style.transition='transform .3s cubic-bezier(.4,0,.2,1)';
+        const angle=(Math.random()-.5)*50;
+        const ox=(Math.random()-.5)*70;
+        c.style.transform=`translate(calc(-50% + ${ox}px),-50%) rotate(${angle}deg) scale(1)`;
+      }, i*45);
+    });
+  }, 200+N*80+550);
+
+  /* Yığılır */
+  setTimeout(()=>{
+    cards.forEach((c,i)=>{
+      setTimeout(()=>{
+        c.style.transition='transform .38s cubic-bezier(.34,1.3,.64,1)';
+        c.style.transform=`translate(-50%,-50%) rotate(${(i-3)*2.5}deg) scale(1)`;
+        c.style.boxShadow=`0 ${4+i*3}px ${12+i*6}px rgba(0,0,0,0.6)`;
+      }, i*55);
+    });
+  }, 200+N*80+900);
+
+  /* Orta kart parlayarak öne çıkar */
+  setTimeout(()=>{
+    const mid=cards[Math.floor(N/2)];
+    mid.style.transition='transform .5s cubic-bezier(.34,1.5,.64,1), filter .5s ease';
+    mid.style.transform='translate(-50%,-60%) rotate(0deg) scale(1.22)';
+    mid.style.filter=`drop-shadow(0 20px 50px rgba(0,0,0,.9)) drop-shadow(0 0 30px ${cc}88)`;
+    mid.style.zIndex='20';
+  }, 200+N*80+1350);
+
+  /* "Hazır!" yazısı */
+  setTimeout(()=>{
+    readyEl.style.transition='opacity .4s ease, transform .4s ease';
+    readyEl.style.opacity='1'; readyEl.style.transform='translateY(0)';
+  }, 200+N*80+1600);
+
+  /* Kapan + callback */
+  setTimeout(()=>{
+    overlay.style.transition='opacity .45s ease';
+    overlay.style.opacity='0';
+    setTimeout(()=>{
+      overlay.classList.remove('active');
+      overlay.style.cssText='';
+      cardsDiv.innerHTML='';
+      titleEl.style.cssText='opacity:0;transform:translateY(8px);transition:none;';
+      readyEl.style.cssText='opacity:0;';
+      onDone();
+    },460);
+  }, 200+N*80+2100);
+}
+
+/* ══════════════════════════════════════════════
+   BAŞLAT
+══════════════════════════════════════════════ */
+document.body.className='t-night';
+
+/* ── LOADER: her şeyden önce çalış, hiçbir şeye bağımlı değil ── */
+(function(){
+  const ls  = document.getElementById('loading-screen');
+  const bar = document.getElementById('load-bar');
+  if(!ls) return;
+  
+  function hide(){ ls.classList.add('fade-out'); setTimeout(()=>{ls.style.display='none';},500); }
+  
+  /* Bar animasyonu */
+  let p=0;
+  const iv=setInterval(()=>{ p+=Math.random()*9+5; if(p>=100){p=100;clearInterval(iv);} bar&&(bar.style.width=p+'%'); },55);
+  
+  /* 1.5s sonra kapat — internet / JS hatası önemli değil */
+  setTimeout(hide, 1500);
+  /* Mutlak güvenlik: 3s */
+  setTimeout(hide, 3000);
+})();
+
+/* ── Geri kalan başlatma — hata olsa bile loader etkilenmez ── */
+try { buildSettings(); } catch(e){ console.warn('buildSettings error:',e); }
+</script>
+</body>
+</html>
